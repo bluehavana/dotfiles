@@ -1,3 +1,4 @@
+#!/bin/zsh
 # ☺ ☹ ✗ ✓ ❤ ♥ ♦ ► ☣ ☠ « » ♪ ♫ ◆ ◇ ✣ ✧ ✦ ☾ ⚅ ⚑ ⚐ ◊ ⚒ ⚓ ⚔ ⚕ ⚛
 # ⚚ ⚠ ⚡ ☢ ✝ ☭ ⌚ ⌛ ¬ × ÷ ∝ ∞ ∢ ∴ ∵ ♭ ♮ ♯ ♩ ❖ ⋆ ✯ ✩ ✪ ° ☐ ☑
 
@@ -11,7 +12,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob
+setopt autocd extendedglob histignorespace histignoredups
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -76,7 +77,10 @@ esac
 
 bindkey "^[[A" up-line-or-history
 bindkey "^[[B" down-line-or-history
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
+alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias tm="tmux choose-session"
 alias tmx="TERM=xterm-256color tmux"
 alias vin='vim -c "NERDTree"'
