@@ -74,21 +74,12 @@ xterm*|tmux*|screen*)
 	;;
 esac
 
-
 bindkey "^[[A" up-line-or-history
 bindkey "^[[B" down-line-or-history
-bindkey "^R" history-incremental-search-backward
-bindkey "^S" history-incremental-search-forward
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+bindkey -M viins '^S' history-incremental-pattern-search-forward
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias tm="tmux choose-session"
 alias tmx="TERM=xterm-256color tmux"
 alias vin='vim -c "NERDTree"'
-
-
-if [ -x /usr/games/fortune ]; then
-	/usr/games/fortune
-elif [ -x /usr/bin/fortune ]; then
-	/usr/bin/fortune
-fi
-echo
