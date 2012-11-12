@@ -30,8 +30,8 @@ URxvt.internalBorder:       5
 ! Fonts
 URxvt.allow_bold:           true
 /* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Anonymous Pro:pixelsize=16
-URxvt*boldFont: xft:Anonymous Pro:pixelsize=16
+URxvt*font: xft:Source Code Pro:pixelsize=14
+URxvt*boldFont: xft:Source Code Pro:pixelsize=14
 
 ! Fix font space
 ! URxvt*letterSpace: -1

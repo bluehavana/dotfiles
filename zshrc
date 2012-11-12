@@ -3,7 +3,7 @@
 # ⚚ ⚠ ⚡ ☢ ✝ ☭ ⌚ ⌛ ¬ × ÷ ∝ ∞ ∢ ∴ ∵ ♭ ♮ ♯ ♩ ❖ ⋆ ✯ ✩ ✪ ° ☐ ☑
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/jmccann/.zshrc'
+zstyle :compinstall
 
 autoload -Uz compinit
 compinit
@@ -65,7 +65,7 @@ man_color() {
 }
 
 case $TERM in
-xterm*|tmux*|screen*)
+xterm*|tmux*|screen*|rxvt-unicode*)
 	set_pretty_prompt
 	alias man="man_color"
 	;;

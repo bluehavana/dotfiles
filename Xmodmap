@@ -1,5 +1,6 @@
 !! No Caps Lock
 clear lock
-!! Make Caps_lock an escape key.
-keycode 0x42 = Escape
-keysym Alt_R = Multi_key
+!! Make Caps_lock a control key.
+keycode 0x42 = Control_L
+keycode 108 = Multi_key
+add Control = Control_L
