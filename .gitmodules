@@ -1,0 +1,69 @@
+[submodule "home_dots/vim/bundle/vim-colors-solarized"]
+	path = home_dots/vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "home_dots/vim/bundle/vim-haml"]
+	path = home_dots/vim/bundle/vim-haml
+	url = git://github.com/tpope/vim-haml.git
+[submodule "home_dots/vim/bundle/vim-cucumber"]
+	path = home_dots/vim/bundle/vim-cucumber
+	url = git://github.com/tpope/vim-cucumber.git
+[submodule "home_dots/vim/bundle/vim-markdown"]
+	path = home_dots/vim/bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "home_dots/vim/bundle/scala-vim-support"]
+	path = home_dots/vim/bundle/scala-vim-support
+	url = git://github.com/rosstimson/scala-vim-support.git
+[submodule "home_dots/vim/bundle/vim-handlebars"]
+	path = home_dots/vim/bundle/vim-handlebars
+	url = git://github.com/nono/vim-handlebars.git
+[submodule "home_dots/vim/bundle/vim-coffee-script"]
+	path = home_dots/vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "home_dots/vim/bundle/textile.vim"]
+	path = home_dots/vim/bundle/textile.vim
+	url = git://github.com/timcharper/textile.vim.git
+[submodule "home_dots/vim/bundle/scss-syntax.vim"]
+	path = home_dots/vim/bundle/scss-syntax.vim
+	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule "home_dots/vim/bundle/csv.vim"]
+	path = home_dots/vim/bundle/csv.vim
+	url = git://github.com/chrisbra/csv.vim.git
+[submodule "home_dots/vim/bundle/vim-ruby"]
+	path = home_dots/vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "home_dots/vim/bundle/vim-less"]
+	path = home_dots/vim/bundle/vim-less
+	url = git://github.com/groenewege/vim-less.git
+[submodule "home_dots/vim/bundle/vim-haskell"]
+	path = home_dots/vim/bundle/vim-haskell
+	url = git://github.com/wlangstroth/vim-haskell.git
+[submodule "home_dots/vim/bundle/vimerl"]
+	path = home_dots/vim/bundle/vimerl
+	url = git://github.com/jimenezrick/vimerl.git
+[submodule "home_dots/vim/bundle/vim-unimpaired"]
+	path = home_dots/vim/bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "home_dots/vim/bundle/vim-fugitive"]
+	path = home_dots/vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "home_dots/vim/bundle/syntastic"]
+	path = home_dots/vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "home_dots/vim/bundle/vim-indent-object"]
+	path = home_dots/vim/bundle/vim-indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
+[submodule "home_dots/vim/bundle/ctrlp.vim"]
+	path = home_dots/vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule "home_dots/vim/bundle/vim-javascript"]
+	path = home_dots/vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "home_dots/vim/bundle/OmniCppComplete"]
+	path = home_dots/vim/bundle/OmniCppComplete
+	url = git://github.com/vim-scripts/OmniCppComplete.git
+[submodule "home_dots/vim/bundle/pythoncomplete"]
+	path = home_dots/vim/bundle/pythoncomplete
+	url = git://github.com/vim-scripts/pythoncomplete
+[submodule "home_dots/vim/bundle/javascriptcomplete"]
+	path = home_dots/vim/bundle/javascriptcomplete
+	url = git://github.com/jimf/javascriptcomplete
