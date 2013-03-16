@@ -5,18 +5,32 @@ call pathogen#helptags()
 set nocompatible
 
 syntax on
-set mouse=n
+set mouse=nv
 " Hide mouse when typing
 set mousehide
 
 set background=dark
-colorscheme vibrantink
+colorscheme solarized
 
 filetype plugin indent on
 
+" status bar
 set laststatus=2
+" display line and char count in status bar
 set ruler
+" display line numbers
 set number
+" allow buffers to exist without being written to disk
+set hidden
+
+if has("wildmenu")
+    set wildignore+=*.a,*.o
+    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+    set wildignore+=.git,.hg,.svn
+    set wildignore+=*~,*.swp,*.tmp
+    set wildmenu
+    set wildmode=longest:full,full
+endif
 
 let NERDTreeIgnore=['\.pyc']
 
