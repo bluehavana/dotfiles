@@ -3,7 +3,7 @@
 # ⚚ ⚠ ⚡ ☢ ✝ ☭ ⌚ ⌛ ¬ × ÷ ∝ ∞ ∢ ∴ ∵ ♭ ♮ ♯ ♩ ❖ ⋆ ✯ ✩ ✪ ° ☐ ☑
 
 # The following lines were added by compinstall
-zstyle :compinstall
+# zstyle :compinstall
 
 autoload -Uz compinit
 compinit
@@ -39,6 +39,8 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias ctags='ctags -f .tags'
 
 set_pretty_prompt() {
 	PS1="%{$fg[cyan]%}%n%{$reset_color%}"
@@ -82,4 +84,3 @@ bindkey -M viins '^S' history-incremental-pattern-search-forward
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias tm="tmux choose-session"
 alias tmx="TERM=xterm-256color tmux"
-alias vin='vim -c "NERDTree"'
