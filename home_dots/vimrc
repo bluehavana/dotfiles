@@ -14,7 +14,7 @@ colorscheme solarized
 
 filetype plugin indent on
 
-" status bar
+" display status bar
 set laststatus=2
 " display line and char count in status bar
 set ruler
@@ -23,21 +23,39 @@ set number
 " allow buffers to exist without being written to disk
 set hidden
 
+" allow modelines to be used; for files that have to declare their type as a
+" comment
+set modeline
+
+" Find files recusively in current directory
+set path+=**
+" Don't have to look for suffixes in find
+set suffixesadd=.rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C,
+set suffixesadd+=.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h
+set suffixesadd+=.s,.S
+
+" Hidden tags file
+set tags+=.tags
+
+" wildmenu setup (tab completion with a builtin popup menu)
+" the wildmenu is a single line
+" wildmode is semi-fuzzy matching
 if has("wildmenu")
     set wildignore+=*.a,*.o
+    set wildignore+=*.class,*.pyc
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
     set wildignore+=.git,.hg,.svn
-    set wildignore+=*~,*.swp,*.tmp
+    set wildignore+=*~,*.swp,*.tmp,.tags,tags
     set wildmenu
     set wildmode=longest:full,full
 endif
 
-let NERDTreeIgnore=['\.pyc']
-
+" rss is xml
 if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
+" Mark past 80 columns
 if exists('+colorcolumn')
   set colorcolumn=81
 else
