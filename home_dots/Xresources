@@ -2,13 +2,13 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                false
-Xft.autohint:               true
-Xft.hintstyle:              hintslight
-Xft.lcdfilter:              lcddefault
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: false
+Xft.autohint: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -17,45 +17,45 @@ Xft.lcdfilter:              lcddefault
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
-! URxvt.shading:              150
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.saveLines:            10000
-URxvt.internalBorder:       5
-!URxvt.lineSpace:            0
+URxvt.depth: 32
+URxvt.geometry: 90x30
+URxvt.transparent: false
+URxvt.fading: 0
+URxvt.loginShell: true
+URxvt.saveLines: 10000
+URxvt.internalBorder: 5
+URxvt.jumpScroll: true
+! URxvt.shading: 150
+! URxvt.urgentOnBell: true
+! URxvt.visualBell: true
+! URxvt.lineSpace: 0
 
 ! Fonts
-URxvt.allow_bold:           true
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
+URxvt.allow_bold: true
 URxvt*font: xft:Source Code Pro:pixelsize=14
 URxvt*boldFont: xft:Source Code Pro:pixelsize=14
+/* URxvt.font: -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
 
 ! Fix font space
 ! URxvt*letterSpace: -1
 
 ! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
+URxvt.scrollStyle: rxvt
+URxvt.scrollBar: false
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,vtwheel,matcher
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome
+URxvt.perl-ext-common: default,vtwheel,matcher
+URxvt.matcher.button: 1
+URxvt.urlLauncher: google-chrome
 
 ! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
+URxvt.cursorBlink: true
+URxvt.cursorColor: #657b83
+URxvt.cursorUnderline: false
 
 ! Pointer
-URxvt.pointerBlank:         true
-
-URxvt.iconFile:            /usr/share/icons/gnome/scalable/apps/utilities-terminal-symbolic.svg
+URxvt.pointerBlank: true
+URxvt.iconFile:  /usr/share/icons/gnome/scalable/apps/utilities-terminal-symbolic.svg
 
 !!Source http://github.com/altercation/solarized
 
