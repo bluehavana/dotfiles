@@ -1,59 +1,78 @@
 #!/bin/zsh
+# vi:filetype=sh
 
 testtype () {
-	type "$1" &> /dev/null
+    type "$1" &> /dev/null
 }
 
-if testtype gnome-settings-daemon
+# Init xinit programs
+if [ -d /etc/X11/xinit/xinitrc.d ]
 then
-				# handles themes, starts gnome-screensaver.
-	gnome-settings-daemon & # You may have to use gconf to disable it
-				# setting the background.
-elif [ -x /usr/lib/gnome/gnome-settings-daemon ]
-then
-	/usr/lib/gnome/gnome-settings-daemon &
+    for f in /etc/X11/xinit/xinitrc.d/*
+    do
+        [ -x "$f" ] && . "$f"
+    done
+
+    unset f
 fi
 
-sleep 1
-
+# TODO: move to startup.sh
 # Helpers
 testtype xcompmgr && xcompmgr -cCfF -D 2 &
-testtype gnome-power-manager && gnome-power-manager &   # for laptops and stuff
-testtype gnome-volume-manager && gnome-volume-manager &  # for mounting CDs, USB sticks, and such
-testtype syndaemon && syndaemon -i 2 -k -t -d &
-
-# Init xinit programs
-if [ -d /etc/X11/xinit/xinit.d ]
-then
-  for f in /etc/X11/xinit/xinitrc.d/*
-  do
-    [ -x "$f" ] && . "$f"
-  done
-
-  unset f
-fi
+testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
 
 # Applets
+if testtype xscreensaver
+then
+    xscreensaver -nosplash &
+elif testtype gnome-screensaver
+then
+    gnome-screensaver &
+fi
+
 if pgrep "NetworkManager" &> /dev/null && testtype nm-applet
 then
-	nm-applet &
+    nm-applet &
 fi
 
-if testtype hcitool && testtype bluetooth-applet
+if testtype hcitool
 then
-	if [ -n "$(hcitool dev | grep -v Devices)" ]
-	then
-		bluetooth-applet &
-	fi
+    if [ -n "$(hcitool dev | grep -v Devices)" ]
+    then
+        if testtype blueman-applet
+        then
+            blueman-applet &
+        elif testtype bluetooth-applet
+        then
+            bluetooth-applet &
+        fi
+    fi
 fi
 
-[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap"
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
+[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
+[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
 [ -f "${HOME}/.background" ] && awsetbg -a "$HOME/.background" &
+
 testtype empathy && empathy --start-hidden &
 
-export DESKTOP_SESSION=gnome
+# For Chrome proxy settings
+# export DESKTOP_SESSION=gnome
 
 unset testtype
 
-exec awesome
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+awesome_cache="${XDG_CACHE_HOME}"/awesome/
+if ! [ -e "${awesome_cache}" ]
+then
+    mkdir --mode 0700 "${awesome_cache}"
+    awesome_stdout="${awesome_cache}/stdout.log"
+    awesome_stderr="${awesome_cache}/stderr.log"
+elif ! [ -d "${awesome_cache}" ]
+then
+    awesome_stdout=/dev/null
+    awesome_stderr=/dev/null
+fi
+
+unset testtype
+
+exec awesome >> "${awesome_stdout}" 2>> "${awesome_stderr}"
