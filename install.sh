@@ -13,75 +13,141 @@ STATUS_COLOR=""
 END_COLOR=""
 if [ -t 1 ] && tput colors &> /dev/null
 then
-	STATUS_COLOR='\e[0;32m'
-	ERROR_COLOR='\e[0;31m'
-	END_COLOR='\e[0m'
+    STATUS_COLOR='\e[0;32m'
+    ERROR_COLOR='\e[0;31m'
+    END_COLOR='\e[0m'
 fi
 
-copy_files() {
-	local source_dir="${1}"
-	local dest_dir="${2}"
+SPECIAL_FILENAMES=('config/' 'vim/bundle/')
 
-	for f in "${source_dir}"/*
-	do
-		local clean_f="${f}"
-		if [ "${clean_f:0:2}" = "./" ]
-		then
-			while [ "${clean_f:0:2}" = "./" \
-				-o "${clean_f:0:1}" = "/" ]
-			do
-				clean_f="${clean_f#./}"
-				clean_f="${clean_f#/}"
-			done
-		fi
-
-		if [ -d "${f}" ]
-		then
-			if [ "${clean_f}" ] && [ -z "${clean_f##+([^/])}" ]
-			then
-				print_status "${clean_f}/" >&2
-			fi
-
-			if [ ! -e "${dest_dir}/.${clean_f}" ]
-			then
-				#cp -rvi "${f}" "${dest_dir}/.${clean_f}"
-				mkdir "${dest_dir}/.${clean_f}"
-				copy_files "${f}" "${dest_dir}"
-
-			elif [ -e "${dest_dir}/.${clean_f}" \
-				-a ! -d "${dest_dir}/.${clean_f}" ]
-			then
-				print_error "What's where directory should be? ${dest_dir}/.${clean_f}" >&2
-				continue
-			elif [ -d "${dest_dir}/.${clean_f}" ]
-			then
-				copy_files "${f}" "${dest_dir}"  
-			fi
-
-		elif [ -f "${f}" ]
-		then
-			if [ "${clean_f}" ] && [ -z "${clean_f##+([^/])}" ]
-			then
-				print_status "${clean_f}" >&2
-			fi
-
-			cp -u "${f}" "${dest_dir}/.${clean_f}"  
-		fi
-	done
+format_status() {
+    printf "[${STATUS_COLOR}*${END_COLOR}] %s\n" "${1}"
 }
 
-print_status() {
-	printf "[${STATUS_COLOR}*${END_COLOR}] %s\n" "${1}"
+format_error() {
+    printf "[${ERROR_COLOR}!${END_COLOR}] ${ERROR_COLOR}%s${END_COLOR}\n" "${1}"
 }
 
-print_error() {
-	printf "[${ERROR_COLOR}!${END_COLOR}] ${ERROR_COLOR}%s${END_COLOR}\n" "${1}"
+clean_filename() {
+        local clean_f="$1"
+
+        if [ "${clean_f:0:2}" = "./" ]
+        then
+            while [ "${clean_f:0:2}" = "./" \
+                -o "${clean_f:0:1}" = "/" ]
+            do
+                clean_f="${clean_f#./}"
+                clean_f="${clean_f#/}"
+            done
+        fi
+        printf %s "${clean_f}"
+}
+
+is_special_dir() {
+    local dir_name="$1"
+    [ "${dir_name}" ] || return 1
+
+    for special in "${SPECIAL_FILENAMES[@]}"
+    do
+        stripped="${dir_name#${special}}"
+        if [ -z "${stripped##*([^/])}" ]
+        then
+            return 0
+        fi
+    done
+    return 1
+}
+
+should_print() {
+    local dir_name="$1"
+    [ "${dir_name}" ] || return 1
+
+    if is_special_dir "${dir_name}" || \
+       ([ -n "${dir_name}" ] && [ -z "${dir_name##+([^/])}" ])
+    then
+        return 0
+    fi
+    return 1
+}
+
+fixup_directory() {
+    local dest_dir="$1"
+
+    if ! [ -e "${dest_dir}" ]
+    then
+        #cp -rvi "${f}" "${dest_dir}/.${clean_f}"
+        mkdir "${dest_dir}"
+        #sync_files "${f}" "${dest_dir}"
+        return 0
+    elif [ -e "${dest_dir}" ] && ! [ -d "${dest_dir}" ]
+    then
+        format_error "What's where directory should be? ${dest_dir}" >&2
+        return 1
+    elif [ -d "${dest_dir}" ]
+    then
+        #sync_files "${f}" "${dest_dir}"
+        return 0
+    fi
+    return 1
+}
+
+copy_file() {
+    local clean="$1"
+    local src="$2"
+    local dest="$3"
+
+    if [ ! -f "${dest}" ] || ! cmp "${src}" "${dest}"
+    then
+        cp -u "${src}" "${dest}"
+        if [ "$?" -ne "0" ]
+        then
+            format_error "Could not copy into file ${dest}" >&2
+            return 1
+        fi
+        return 0
+    fi
+    return 1
+}
+
+sync_files() {
+    local source_dir="$1"
+    local dest_dir="$2"
+
+    local updated=1
+
+    for f in "${source_dir}"/*
+    do
+        local clean_f="$(clean_filename "${f}")"
+
+        if [ -d "${f}" ]
+        then
+            if fixup_directory "${dest_dir}/.${clean_f}"
+            then
+                if sync_files "${f}" "${dest_dir}" && [ "${updated}" -ne "0" ]
+                then
+                    updated=0
+                fi
+            fi
+        elif [ -f "${f}" ]
+        then
+            if copy_file "${clean_f}" "${f}" "${dest_dir}/.${clean_f}" && \
+               [ "${updated}" -ne "0" ]
+            then
+                updated=0
+            fi
+        fi
+
+        if [ "${updated}" -eq "0" ] && should_print "${clean_f}"
+        then
+            format_status "${clean_f}" >&2
+        fi
+    done
 }
 
 pushd "${SOURCE_DIR}" > /dev/null
 pushd "home_dots" > /dev/null
 
-copy_files "./" "${DEST_DIR}" 
+sync_files "./" "${DEST_DIR}" || format_error "Error syncing dotfiles!"
 
 popd > /dev/null # home_dots
 popd > /dev/null # dirname $0
