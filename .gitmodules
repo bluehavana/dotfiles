@@ -67,3 +67,6 @@
 [submodule "home_dots/vim/bundle/javascriptcomplete"]
 	path = home_dots/vim/bundle/javascriptcomplete
 	url = git://github.com/jimf/javascriptcomplete
+[submodule "home_dots/vim/bundle/vim-pandoc"]
+	path = home_dots/vim/bundle/vim-pandoc
+	url = http://github.com/vim-pandoc/vim-pandoc
