@@ -97,7 +97,7 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-local myawesomemenu = {
+local awesome_menu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
    { "restart", awesome.restart },
@@ -107,7 +107,8 @@ local myawesomemenu = {
 local menu_items = freedesktop.menu.new()
 table.insert(menu_items, { "awesome", awesome_menu, beautiful.awesome_icon })
 table.insert(menu_items, { "terminal", terminal,
-                           freedesktop.utils.lookup_icon("terminal") })
+                           freedesktop.utils.lookup_icon({ icon = "terminal"})
+                         })
 local mymainmenu = awful.menu.new({ items = menu_items,
                                     theme = { width = 150 } })
 
