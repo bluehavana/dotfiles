@@ -12,7 +12,9 @@ set mousehide
 set background=dark
 colorscheme solarized
 
-filetype plugin indent on
+if has("autocmd")
+    filetype plugin indent on
+endif
 
 " display status bar
 set laststatus=2
@@ -41,11 +43,19 @@ set tags+=.tags
 " the wildmenu is a single line
 " wildmode is semi-fuzzy matching
 if has("wildmenu")
+    " Compiled files
     set wildignore+=*.a,*.o
     set wildignore+=*.class,*.pyc
+    " Images
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+    " VCS stuff
     set wildignore+=.git,.hg,.svn
+    " temperary files and tags files
     set wildignore+=*~,*.swp,*.tmp,.tags,tags
+    " LaTeX crap
+    set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps,
+    set wildignore+=*.toc,*.ttt
+
     set wildmenu
     set wildmode=longest:full,full
 endif
