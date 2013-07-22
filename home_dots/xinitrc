@@ -16,11 +16,6 @@ then
     unset f
 fi
 
-# TODO: move to startup.sh
-# Helpers
-testtype xcompmgr && xcompmgr -cCfF -D 2 &
-testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
-
 # Applets
 if testtype xscreensaver
 then
@@ -30,35 +25,8 @@ then
     gnome-screensaver &
 fi
 
-if pgrep "NetworkManager" &> /dev/null && testtype nm-applet
-then
-    nm-applet &
-fi
-
-if testtype hcitool
-then
-    if [ -n "$(hcitool dev | grep -v Devices)" ]
-    then
-        if testtype blueman-applet
-        then
-            blueman-applet &
-        elif testtype bluetooth-applet
-        then
-            bluetooth-applet &
-        fi
-    fi
-fi
-
-[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
-[ -f "${HOME}/.background" ] && awsetbg -a "$HOME/.background" &
-
-testtype empathy && empathy --start-hidden &
-
 # For Chrome proxy settings
 # export DESKTOP_SESSION=gnome
-
-unset testtype
 
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
 awesome_cache="${XDG_CACHE_HOME}"/awesome/
@@ -75,4 +43,4 @@ fi
 
 unset testtype
 
-exec awesome >> "${awesome_stdout}" 2>> "${awesome_stderr}"
+exec awesome #>> "${awesome_stdout}" 2>> "${awesome_stderr}"
