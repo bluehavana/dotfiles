@@ -131,3 +131,4 @@ fi
 echo
 
 unset big_hostname sonic stats my_uptime append_strings
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
