@@ -249,7 +249,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn_with_shell(audio_up) end),
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn_with_shell(audio_down) end ),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn_with_shell(audio_mute) end ),
-    awful.key({ "Control", "Alt" }, "l", function () awful.util.spawn_with_shell(scrnsaver_cmd) end),
+    awful.key({ "Mod1", "Control" }, "l", function () awful.util.spawn_with_shell(scrnsaver_cmd) end),
     awful.key({ modkey, }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey, }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, }, "Escape", awful.tag.history.restore),
