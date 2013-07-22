@@ -81,6 +81,8 @@ bindkey "^[[B" down-line-or-history
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^S' history-incremental-pattern-search-forward
 
+[ -s "${HOME}"/.rvm/scripts/rvm ] && source "${HOME}"/.rvm/scripts/rvm
+
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias tm="tmux choose-session"
 alias tmx="TERM=xterm-256color tmux"
