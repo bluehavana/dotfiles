@@ -51,7 +51,10 @@ end
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init( awful.util.getdir("config") .. "/themes/solarized_dark/theme.lua" )
 beautiful.font = "Roboto 12"
---beautiful.wallpaper = awful.util.getdir("config") .. "../../.background"
+user_wallpaper = os.getenv("HOME") .. "/.background"
+if awful.util.file_readable(user_wallpaper) then
+  beautiful.wallpaper = user_wallpaper
+end
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -241,7 +244,7 @@ scrnsaver_cmd = scrnsaver_cmd .. " || gnome-screensaver-command --lock"
 
 modify_audio = "pacmd dump | grep set-default-sink | tail -1 | cut -d' ' -f 2 | xargs -I '{}' pactl "
 audio_up = modify_audio .. "set-sink-volume '{}' +10%"
-audio_down = modify_audio .. "set-sink-volume '{}' -10%"
+audio_down = modify_audio .. "set-sink-volume '{}' -- -10%"
 audio_mute = modify_audio .. "set-sink-mute '{}' toggle"
 -- }}}
 
