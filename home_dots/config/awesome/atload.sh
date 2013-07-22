@@ -9,6 +9,7 @@ testtype xcompmgr && xcompmgr -cCfF -D 2 &
 testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
 
 # Applets
+testtype pasystray && pasystray &
 if testtype xscreensaver
 then
     xscreensaver -nosplash &
