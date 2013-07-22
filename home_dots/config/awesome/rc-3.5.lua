@@ -11,6 +11,12 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+local vicious = require("vicious")
+
+local freedesktop = {}
+freedesktop.menu = require("freedesktop.menu")
+freedesktop.utils = require("freedesktop.utils")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -45,7 +51,7 @@ end
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init( awful.util.getdir("config") .. "/themes/solarized_dark/theme.lua" )
 beautiful.font = "Roboto 12"
-beautiful.wallpaper = awful.util.getdir("config") .. "../../.background"
+--beautiful.wallpaper = awful.util.getdir("config") .. "../../.background"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -240,10 +246,10 @@ audio_mute = modify_audio .. "set-sink-mute '{}' toggle"
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ }, "XF86AudioRaiseVolume", audio_up),
-    awful.key({ }, "XF86AudioLowerVolume", audio_down),
-    awful.key({ }, "XF86AudioMute", audio_mute),
-    awful.key({ "Control", "Alt" }, "l", awful.util.spawn_with_shell(scrnsaver_cmd)),
+    awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn_with_shell(audio_up) end),
+    awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn_with_shell(audio_down) end ),
+    awful.key({ }, "XF86AudioMute", function () awful.util.spawn_with_shell(audio_mute) end ),
+    awful.key({ "Control", "Alt" }, "l", function () awful.util.spawn_with_shell(scrnsaver_cmd) end),
     awful.key({ modkey, }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey, }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey, }, "Escape", awful.tag.history.restore),
