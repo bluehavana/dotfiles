@@ -96,9 +96,9 @@ copy_file() {
     local src="$2"
     local dest="$3"
 
-    if [ ! -f "${dest}" ] || ! cmp "${src}" "${dest}"
+    if [ ! -f "${dest}" ] || ! cmp "${src}" "${dest}" > /dev/null
     then
-        cp -u "${src}" "${dest}"
+        cp "${src}" "${dest}"
         if [ "$?" -ne "0" ]
         then
             format_error "Could not copy into file ${dest}" >&2
