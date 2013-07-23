@@ -190,7 +190,7 @@ vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT1")
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
-    prompt_box[s] = awful.widget.prompt({prompt = "$"})
+    prompt_box[s] = awful.widget.prompt({prompt = "$ "})
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
