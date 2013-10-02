@@ -99,6 +99,32 @@ URxvt*background: [95]#002b36
 *color7: #eee8d5
 *color15: #fdf6e3
 
+! xscreensaver
+xscreensaver.lock:           False
+xscreensaver.passwdTimeout:  0:01:00
+xscreensaver.verbose:        False
+xscreensaver.timestamp:      True
+xscreensaver.splash:         False
+!splashDuration: 0:00:00
+!fade:           False
+!unfade:         False
+xscreensaver.fadeSeconds:    0:00:01
+xscreensaver.fadeTicks:      20
+xscreensaver.captureStderr:  False
+!ignoreUninstalledPrograms:False
+!font:           *-profont-medium-r-*-*-16-m-*
+xscreensaver.dpmsEnabled:   True
+!dpmsQuickOff:  False
+!xscreensaver.dpmsStandby:   0:00:01
+!xscreensaver.dpmsSuspend:   0:00:01
+xscreensaver.dpmsOff:       0:00:01
+xscreensaver.grabDesktopImages:  False
+xscreensaver.grabVideoFrames:    False
+xscreensaver.chooseRandomImages: False
+!imageDirectory:
+xscreensaver.mode:           blank
+xscreensaver.overlayStderr:  False
+
 !font settings
 xscreensaver.Dialog.headingFont: -*-profont-bold-r-*-*-32-*-*-*-*-*-*-*
 xscreensaver.Dialog.bodyFont: -*-profont-medium-r-*-*-16-*-*-*-*-*-*-*
