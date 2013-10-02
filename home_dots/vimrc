@@ -24,6 +24,17 @@ set ruler
 set number
 " allow buffers to exist without being written to disk
 set hidden
+" interactively search for expression
+set incsearch
+" smoother redraw for faster terms
+set ttyfast
+" minimum number of lines to display around the curser line
+if !&scrolloff
+    set scrolloff=2
+endif
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 
 " allow modelines to be used; for files that have to declare their type as a
 " comment
@@ -32,7 +43,7 @@ set modeline
 " Find files recusively in current directory
 set path+=**
 " Don't have to look for suffixes in find
-set suffixesadd=.rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C,
+set suffixesadd=.rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C
 set suffixesadd+=.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h
 set suffixesadd+=.s,.S
 
@@ -53,7 +64,7 @@ if has("wildmenu")
     " temperary files and tags files
     set wildignore+=*~,*.swp,*.tmp,.tags,tags
     " LaTeX crap
-    set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps,
+    set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps
     set wildignore+=*.toc,*.ttt
 
     set wildmenu
