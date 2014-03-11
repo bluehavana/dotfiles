@@ -8,6 +8,11 @@ testtype () {
 testtype xcompmgr && xcompmgr -cCfF -D 2 &
 testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
 
+[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
+
+# Needs to be loaded before xscreensaver
+[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
+
 # Applets
 testtype pasystray && pasystray &
 if testtype xscreensaver
@@ -36,9 +41,6 @@ then
         fi
     fi
 fi
-
-[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
 
 testtype empathy && empathy --start-hidden &
 

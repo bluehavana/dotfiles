@@ -16,15 +16,6 @@ then
     unset f
 fi
 
-# Applets
-if testtype xscreensaver
-then
-    xscreensaver -nosplash &
-elif testtype gnome-screensaver
-then
-    gnome-screensaver &
-fi
-
 # For Chrome proxy settings
 # export DESKTOP_SESSION=gnome
 
