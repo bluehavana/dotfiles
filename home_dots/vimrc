@@ -1,17 +1,12 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" vim:filetype=vim
 
 " vim behaves like vim and not vi
 set nocompatible
 
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 syntax on
-set mouse=nv
-" Hide mouse when typing
-set mousehide
-
-set background=dark
-colorscheme solarized
-
 if has("autocmd")
     filetype plugin indent on
 endif
@@ -24,21 +19,72 @@ set ruler
 set number
 " allow buffers to exist without being written to disk
 set hidden
+set encoding=utf-8
+" highlight search terms; :noh to clear
+set hlsearch
 " interactively search for expression
 set incsearch
 " smoother redraw for faster terms
 set ttyfast
+" faster escape into modes
+set timeoutlen=300
+set ttimeoutlen=50
+" let OS decide when to sync
+set nofsync
+" don't need weird redraw times
+set lazyredraw
 " minimum number of lines to display around the curser line
-if !&scrolloff
-    set scrolloff=2
-endif
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-
+set scrolloff=3
+set sidescrolloff=3
+" sane defaults for windows splits
+set splitbelow
+set splitright
+" mouse in normal and visual mode
+set mouse=nv
+" Hide mouse when typing
+set mousehide
+" backspace works like normal
+set backspace=indent,eol,start
+" use system clipboard
+set clipboard=unnamed
+" commandline history
+set history=1000
 " allow modelines to be used; for files that have to declare their type as a
 " comment
 set modeline
+" switch to a window in which a buffer is already open
+set switchbuf=useopen
+" for spell checking
+set spelllang=eng_US
+set dictionary+=/usr/share/dict/words
+" TODO: sane viminfo defaults
+set viminfo+=n"$VIM/viminfo"
+" character to show if a line is wrapped
+set showbreak=↪
+
+set background=dark
+colorscheme solarized
+" force 256 term
+let g:solarized_termcolors=256
+set t_Co=256
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+" Mark past 80 columns
+if exists('+colorcolumn')
+  set colorcolumn=81
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
+endif
+
+" TODO: LESS PINKIE HURT!!!!
+" undo?
+" if has("persistant_undo")
+"   set undofile
+"   set undolevel=1000
+" endif
+" set autowriteall
+" set autoread
 
 " Find files recusively in current directory
 set path+=**
@@ -48,7 +94,7 @@ set suffixesadd+=.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h
 set suffixesadd+=.s,.S
 
 " Hidden tags file
-set tags+=.tags
+set tags+=.tags;
 
 " wildmenu setup (tab completion with a builtin popup menu)
 " the wildmenu is a single line
@@ -74,13 +120,34 @@ endif
 " rss is xml
 if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
+  autocmd BufNewFile,BufRead *.json setfiletype javascript
 endif
 
-" Mark past 80 columns
-if exists('+colorcolumn')
-  set colorcolumn=81
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
-endif
+let g:ctrlp_cmd = "CtrlPMixed"
 
-set spelllang=eng_US
+" Plugin TODO:
+" delimitMate " <- auto insert end delimiters ]}'
+" vim-signature " <- show marks next to line numbers
+" tpope/vim-vinegar.git
+" tpope/endwise.vim " <- completes end for 'if...end', '#ifdef...#endif', etc
+" nelstrom/vim-textobj-rubyblock
+" bps/vim-textobj-python
+" Shougo/unite.vim " depends on Shougo/vimproc.vim
+" youcompleteme
+" unit plugins?
+" vimez/vim-tmux or zepto/unite-tmux or vim-tmux-navigator
+" majutsushi/tagbar
+" elera/vim-javascript-syntax
+" pangloss/vim-javascript
+" marijnh/tern_for_vim " <- awesome js linter/checker/parser
+" let g:syntastic_aggregate_errors=1
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_python_pylint_exe="pylint"
+" let g:syntastic_error_symbol='✗'
+" let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_style_error_symbol='⚡'
+" let g:syntastic_style_warning_symbol='⚡'
+" let g:syntastic_check_on_open=1
+" let g:rubycomplete_buffer_loading=1
+" let g:rubycomplete_classes_in_global=1
+" let g:rubycomplete_rails=1
