@@ -85,7 +85,6 @@ stats() {
 	echo "    ${CYAN}logs:${COLOR_RESET} "
 }
 
-
 sonic() {
 	local SONIC
 	SONIC="${BLUE}                          ${LIGHT_BLUE}__${BLUE}____                          ${COLOR_RESET}\n"
@@ -119,8 +118,38 @@ sonic() {
 	echo "${SONIC}"
 }
 
+small_sonic() {
+	local B="\x1b[0;34m"
+	local L="\x1b[1;34m"
+	local W="\x1b[1;37m"
+	local R="\x1b[0m"
+cat <<EOSONIC
+$B            ,+::#0"\\:$L,$B'$L,$B,"""""#m:q;,       
+$B         +/+++++++++$L/   1${B}b          ##,    
+$B      +'+++++++++++$L{    'b$B@         +##    
+$B    /"+++,..:;""%:-$L{     '1$B+    '+++++##,  
+$B   +++,.''        \`$L{     :'$B'         ++#+;  
+$B  *+++    ,,:;'!\` .$L{   $B''\`             ++ : 
+$B #.'   ,:;!#++++i"          ,+====-.,     , 
+$B//   ,'++K++++.i@           '  $W,,.,$B  \\  ./  
+$B|   *++++__,**"'              $W:|#:;'.$B '-'\`  
+$B   /+.;''\`\`                   $W'i#\`   :  ,$B   
+$B   *'      ,:+ "  |            ${W}'ii.."   \`$B 
+$B  /      ."\`      #       ,..             
+$B        \`          '   ####/           .##,
+$B                      ####;            '##
+$B                       '"bl      ;,       
+$B                                  ':.$R     
+EOSONIC
+# '
+}
+
 SIDE=$(echo "$(big_hostname)" && echo && echo && echo "$(stats)")
-append_strings "$(sonic)" "${SIDE}"
+
+append_strings "$(echo "$(small_sonic)")" "${SIDE}"
+
+echo
+
 if [ -x /usr/games/fortune ]
 then
 	/usr/games/fortune
@@ -130,5 +159,6 @@ then
 fi
 echo
 
-unset big_hostname sonic stats my_uptime append_strings
+unset -f sonic small_sonic big_hostname stats append_strings
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

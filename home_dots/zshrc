@@ -78,6 +78,8 @@ xterm*|tmux*|screen*|rxvt-unicode*)
 	;;
 esac
 
+unset -f set_pretty_prompt man_color
+
 bindkey "^[[A" up-line-or-history
 bindkey "^[[B" down-line-or-history
 bindkey -M viins '^R' history-incremental-pattern-search-backward
