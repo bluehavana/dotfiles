@@ -34,6 +34,8 @@ URxvt.jumpScroll: true
 URxvt.allow_bold: true
 URxvt*font: xft:Source Code Pro:pixelsize=14
 URxvt*boldFont: xft:Source Code Pro:pixelsize=14
+URxvt*italicFong: xft:Source Code Pro:italic:pixelsize=14
+URxvt*bolditalic: xft:Source Code Pro:bold:italic:pixelsize=14
 /* URxvt.font: -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
 
 ! Fix font space
