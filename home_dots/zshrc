@@ -42,6 +42,8 @@ alias l='ls -CF'
 
 alias ctags='ctags -f .tags'
 
+alias -g L='less -R '
+
 set_pretty_prompt() {
 	PS1="%{$fg[cyan]%}%n%{$reset_color%}"
 	PS1+=" ⚡ "
@@ -82,6 +84,9 @@ bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^S' history-incremental-pattern-search-forward
 
 PATH=$PATH:$HOME/.rvm/bin
+
+export EDITOR=vim
+export VISUAL=vim
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias tm="tmux choose-session"
