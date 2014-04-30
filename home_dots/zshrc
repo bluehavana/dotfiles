@@ -202,3 +202,10 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+# use zsh-syntax-highlighting
+SYNTAX_HIGHLIGHT_FILE="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [[ -f "${SYNTAX_HIGHLIGHT_FILE}" ]]
+then
+	source "${SYNTAX_HIGHLIGHT_FILE}"
+fi
