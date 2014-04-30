@@ -70,3 +70,6 @@
 [submodule "home_dots/vim/bundle/vim-pandoc"]
 	path = home_dots/vim/bundle/vim-pandoc
 	url = http://github.com/vim-pandoc/vim-pandoc
+[submodule "home_dots/vim/bundle/base16-vim"]
+	path = home_dots/vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
