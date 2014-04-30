@@ -19,6 +19,7 @@ bindkey -v
 # Not interactive?
 [ X"${-#*i}" != X"$-" ] || return
 
+setopt hist_ignore_all_dups
 autoload -U colors
 colors
 
@@ -38,21 +39,46 @@ alias egrep='egrep --color=auto'
 
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -CF --group-directories-first'
 
 alias ctags='ctags -f .tags'
 
 alias -g L='less -R '
+alias -g x='exit'
+
+# Used for vicmd mode indication
+DEFAULT_PROMPT=""
+CMDMODE_PROMPT=""
 
 set_pretty_prompt() {
-	PS1="%{$fg[cyan]%}%n%{$reset_color%}"
+	add="%{$fg[cyan]%}%n%{$reset_color%}"
+	PS1=$add
+	CMDMODE_PROMPT=$add
+
 	PS1+=" ⚡ "
+	CMDMODE_PROMPT+=" %{$fg[yellow]%}⚡%{$reset_color%} "
+
 	case "$SSH_CLIENT$SSH_CONNECTION" in
-	?*) PS1+="%{$fg[magenta]%}%m " ;;
-	*)  PS1+="%{$fg[cyan]%}%m " ;;
+	?*)
+		add="%{$fg[magenta]%}%m "
+		PS1+=$add
+		CMDMODE_PROMPT+=$add
+		;;
+	*)
+		add="%{$fg[cyan]%}%m "
+		PS1+=$add
+		CMDMODE_PROMPT+=$add
+		;;
 	esac
-	PS1+="%{$reset_color%}"
-	PS1+="%(?.%{$fg[green]%}➤.%{$fg[red]%}➤)%{$reset_color%} "
+	add="%{$reset_color%}"
+	PS1+=$add
+	CMDMODE_PROMPT+=$add
+
+	add="%(?.%{$fg[green]%}➤.%{$fg[red]%}➤)%{$reset_color%} "
+	PS1+=$add
+	CMDMODE_PROMPT+=$add
+
+	DEFAULT_PROMPT=$PS1
 	RPROMPT='%~'
 }
 
@@ -75,21 +101,104 @@ xterm*|tmux*|screen*|rxvt-unicode*)
 	;;
 *)
 	PROMPT='%n @ %m:%~ $ '
+	DEFAULT_PROMPT=$PROMPT
+	CMDMODE_PROMPT=$PROMPT
 	;;
 esac
 
-unset -f set_pretty_prompt man_color
+# vicmd mode indication hooks
+# http://zshwiki.org/home/zle/vi-mode
+precmd() {
+	PROMPT=$DEFAULT_PROMPT
+}
 
-bindkey "^[[A" up-line-or-history
-bindkey "^[[B" down-line-or-history
-bindkey -M viins '^R' history-incremental-pattern-search-backward
-bindkey -M viins '^S' history-incremental-pattern-search-forward
+zle-keymap-select() {
+	if [[ $KEYMAP = vicmd ]]
+	then
+		PROMPT=$CMDMODE_PROMPT
+	else
+		PROMPT=$DEFAULT_PROMPT
+	fi
+	() { return $__prompt_status }
+	zle reset-prompt
+}
 
-PATH=$PATH:$HOME/.rvm/bin
+zle -N zle-keymap-select
+# zle -N zle-line-init; defunct, see Home/End section
+
+# better insert mode defaults
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+bindkey '^K' kill-line
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+# inline history complete
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+# to be able to delete coming out of command mode
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+#vim specific
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'G' end-of-buffer-or-history
+# actual undo stack
+bindkey -a 'u' undo
+bindkey -a '^R' redo
+
+# faster escapes
+KEYTIMEOUT=1
 
 export EDITOR=vim
 export VISUAL=vim
 
+PATH=$PATH:$HOME/.rvm/bin
+
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
-alias tm="tmux choose-session"
-alias tmx="TERM=xterm-256color tmux"
+alias v='vim --remote-silent'
+
+if command -v colordiff &> /dev/null;
+then
+	alias diff='colordiff -Nuar'
+else
+	alias diff='diff -Nuar'
+fi
+
+########## cmdline vi fixes ###########
+# http://zshwiki.org/home/zle/bindkeys
+# home, end, insert, delete keys working
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+typeset -A key
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+key[Insert]="${terminfo[kich1]}"
+key[Delete]="${terminfo[kdch1]}"
+key[Up]="${terminfo[kcuu1]}"
+key[Down]="${terminfo[kcud1]}"
+key[Right]="${terminfo[kcuf1]}"
+key[Left]="${terminfo[kcub1]}"
+
+# setup key accordingly
+[[ -n "${key[Home]}" ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}" ]] && bindkey "${key[End]}" end-of-line
+[[ -n "${key[Insert]}" ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n "${key[Delete]}" ]] && bindkey "${key[Delete]}" delete-char
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-history
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-history
+[[ -n "${key[Right]}" ]] && bindkey "${key[Right]}" forward-char
+[[ -n "${key[Left]}" ]] && bindkey "${key[Left]}" backward-char
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init () {
+        # for the vicmd mode stuff
+        typeset -g __prompt_status="$?"
+        printf '%s' "${terminfo[smkx]}"
+    }
+    function zle-line-finish () {
+        printf '%s' "${terminfo[rmkx]}"
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
