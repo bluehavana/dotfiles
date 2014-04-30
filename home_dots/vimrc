@@ -63,9 +63,8 @@ set viminfo+=n"$VIM/viminfo"
 set showbreak=↪
 
 set background=dark
-colorscheme solarized
+colorscheme base16-monokai
 " force 256 term
-let g:solarized_termcolors=256
 set t_Co=256
 
 " Highlight VCS conflict markers
@@ -124,7 +123,20 @@ if has("autocmd")
 endif
 
 let g:ctrlp_cmd = "CtrlPMixed"
-let g:delimitMate_offByDefault=1
+let g:delimitMate_offByDefault = 1
+
+" syntastic good configs
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_pylint_exe = "pylint"
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '⚡'
+let g:syntastic_style_warning_symbol = '⚡'
+let g:syntastic_check_on_open=1
+
+" netrw treeview
+let g:netrw_liststyle = 3
 
 " for textobj-rubyblock
 runtime macros/matchit.vim
@@ -132,7 +144,6 @@ runtime macros/matchit.vim
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
-" bps/vim-textobj-python
 " Shougo/unite.vim " depends on Shougo/vimproc.vim
 " youcompleteme
 " unit plugins?
@@ -141,14 +152,6 @@ runtime macros/matchit.vim
 " elera/vim-javascript-syntax
 " pangloss/vim-javascript
 " marijnh/tern_for_vim " <- awesome js linter/checker/parser
-" let g:syntastic_aggregate_errors=1
-" let g:syntastic_always_populate_loc_list=1
-" let g:syntastic_python_pylint_exe="pylint"
-" let g:syntastic_error_symbol='✗'
-" let g:syntastic_warning_symbol='⚠'
-" let g:syntastic_style_error_symbol='⚡'
-" let g:syntastic_style_warning_symbol='⚡'
-" let g:syntastic_check_on_open=1
 " let g:rubycomplete_buffer_loading=1
 " let g:rubycomplete_classes_in_global=1
 " let g:rubycomplete_rails=1
