@@ -1,4 +1,5 @@
 #!/bin/zsh
+# vim: filetype=zsh
 # ☺ ☹ ✗ ✓ ❤ ♥ ♦ ► ☣ ☠ « » ♪ ♫ ◆ ◇ ✣ ✧ ✦ ☾ ⚅ ⚑ ⚐ ◊ ⚒ ⚓ ⚔ ⚕ ⚛
 # ⚚ ⚠ ⚡ ☢ ✝ ☭ ⌚ ⌛ ¬ × ÷ ∝ ∞ ∢ ∴ ∵ ♭ ♮ ♯ ♩ ❖ ⋆ ✯ ✩ ✪ ° ☐ ☑
 
@@ -96,13 +97,13 @@ set_pretty_prompt() {
 
 man_color() {
 	env \
-		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-		LESS_TERMCAP_md=$(printf "\e[1;31m") \
-		LESS_TERMCAP_me=$(printf "\e[0m") \
-		LESS_TERMCAP_se=$(printf "\e[0m") \
-		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-		LESS_TERMCAP_ue=$(printf "\e[0m") \
-		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+		LESS_TERMCAP_mb="$(printf "\e[1;31m"a" \
+		LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+		LESS_TERMCAP_me="$(printf "\e[0m")" \
+		LESS_TERMCAP_se="$(printf "\e[0m")" \
+		LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+		LESS_TERMCAP_ue="$(printf "\e[0m")" \
+		LESS_TERMCAP_us="$(printf "\e[1;32m")" \
 			man "$@"
 }
 
@@ -113,23 +114,23 @@ xterm*|tmux*|screen*|rxvt-unicode*)
 	;;
 *)
 	PROMPT='%n @ %m:%~ $ '
-	DEFAULT_PROMPT=$PROMPT
-	CMDMODE_PROMPT=$PROMPT
+	DEFAULT_PROMPT="${PROMPT}"
+	CMDMODE_PROMPT="$PROMPT}"
 	;;
 esac
 
 # vicmd mode indication hooks
 # http://zshwiki.org/home/zle/vi-mode
 precmd() {
-	PROMPT=$DEFAULT_PROMPT
+	PROMPT="${DEFAULT_PROMPT}"
 }
 
 zle-keymap-select() {
-	if [[ $KEYMAP = vicmd ]]
+	if [[ "${$KEYMAP}" = vicmd ]]
 	then
-		PROMPT=$CMDMODE_PROMPT
+		PROMPT="${CMDMODE_PROMPT}"
 	else
-		PROMPT=$DEFAULT_PROMPT
+		PROMPT="${DEFAULT_PROMPT}"
 	fi
 	() { return $__prompt_status }
 	zle reset-prompt
@@ -163,7 +164,7 @@ KEYTIMEOUT=1
 export EDITOR=vim
 export VISUAL=vim
 
-PATH=$PATH:$HOME/.rvm/bin
+PATH="${PATH}":"${HOME}"/.rvm/bin
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias v='vim --remote-silent'
@@ -191,14 +192,38 @@ key[Right]="${terminfo[kcuf1]}"
 key[Left]="${terminfo[kcub1]}"
 
 # setup key accordingly
-[[ -n "${key[Home]}" ]] && bindkey "${key[Home]}" beginning-of-line
-[[ -n "${key[End]}" ]] && bindkey "${key[End]}" end-of-line
-[[ -n "${key[Insert]}" ]] && bindkey "${key[Insert]}" overwrite-mode
-[[ -n "${key[Delete]}" ]] && bindkey "${key[Delete]}" delete-char
-[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-history
-[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-history
-[[ -n "${key[Right]}" ]] && bindkey "${key[Right]}" forward-char
-[[ -n "${key[Left]}" ]] && bindkey "${key[Left]}" backward-char
+if [[ -n "${key[Home]}" ]]
+then
+	bindkey "${key[Home]}" beginning-of-line
+fi
+if [[ -n "${key[End]}" ]]
+then
+	bindkey "${key[End]}" end-of-line
+fi
+if [[ -n "${key[Insert]}" ]]
+then
+	bindkey "${key[Insert]}" overwrite-mode
+fi
+if [[ -n "${key[Delete]}" ]]
+then
+	bindkey "${key[Delete]}" delete-char
+fi
+if [[ -n "${key[Up]}" ]]
+then
+	bindkey "${key[Up]}" up-line-or-history
+fi
+if [[ -n "${key[Down]}" ]]
+then
+	bindkey "${key[Down]}" down-line-or-history
+fi
+if [[ -n "${key[Right]}" ]]
+then
+	bindkey "${key[Right]}" forward-char
+fi
+if [[ -n "${key[Left]}" ]]
+then
+	bindkey "${key[Left]}" backward-char
+fi
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.

@@ -1,4 +1,5 @@
 #!/bin/zsh
+# vim: filetype=zsh
 echo
 CYAN="\x1b[0;36m"
 BLUE="\x1b[0;34m"
