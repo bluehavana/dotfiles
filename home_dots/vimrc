@@ -124,6 +124,7 @@ if has("autocmd")
 endif
 
 let g:ctrlp_cmd = "CtrlPMixed"
+let g:delimitMate_offByDefault=1
 
 " Plugin TODO:
 " delimitMate " <- auto insert end delimiters ]}'
