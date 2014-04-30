@@ -12,9 +12,21 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob histignorespace histignoredups
 bindkey -v
 # End of lines configured by zsh-newuser-install
+
+# cd if first command is a directory
+setopt autocd
+# better expansion
+setopt extendedglob
+# don't store lines begining with space in history
+setopt histignorespace
+# save space
+setopt histignoredups
+# allow # for comments on command line
+setopt interactivecomments
+# troublesome feature
+setopt noflowcontrol
 
 # Not interactive?
 [ X"${-#*i}" != X"$-" ] || return
