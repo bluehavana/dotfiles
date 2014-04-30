@@ -85,3 +85,6 @@
 [submodule "home_dots/vim/bundle/vim-textobj-rubyblock"]
 	path = home_dots/vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "home_dots/vim/bundle/vim-textobj-python"]
+	path = home_dots/vim/bundle/vim-textobj-python
+	url = https://github.com/bps/vim-textobj-python.git
