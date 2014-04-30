@@ -126,12 +126,12 @@ endif
 let g:ctrlp_cmd = "CtrlPMixed"
 let g:delimitMate_offByDefault=1
 
+" for textobj-rubyblock
+runtime macros/matchit.vim
+
 " Plugin TODO:
-" delimitMate " <- auto insert end delimiters ]}'
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
-" tpope/endwise.vim " <- completes end for 'if...end', '#ifdef...#endif', etc
-" nelstrom/vim-textobj-rubyblock
 " bps/vim-textobj-python
 " Shougo/unite.vim " depends on Shougo/vimproc.vim
 " youcompleteme
