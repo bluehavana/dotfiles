@@ -73,3 +73,6 @@
 [submodule "home_dots/vim/bundle/base16-vim"]
 	path = home_dots/vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
+[submodule "home_dots/vim/bundle/delimitMate"]
+	path = home_dots/vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
