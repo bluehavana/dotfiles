@@ -159,7 +159,7 @@ precmd() {
 }
 
 zle-keymap-select() {
-	if [[ "${$KEYMAP}" = vicmd ]]
+	if [[ "${KEYMAP}" = "vicmd" ]]
 	then
 		PROMPT="${CMDMODE_PROMPT}"
 	else
