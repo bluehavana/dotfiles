@@ -18,5 +18,3 @@ set list
 " Highlight extra whitespace at the end of a line
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-
-DelimitMateSwitch
