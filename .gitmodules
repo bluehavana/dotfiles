@@ -88,3 +88,6 @@
 [submodule "home_dots/vim/bundle/vim-textobj-python"]
 	path = home_dots/vim/bundle/vim-textobj-python
 	url = https://github.com/bps/vim-textobj-python.git
+[submodule "home_dots/vim/bundle/vim-localvimrc"]
+	path = home_dots/vim/bundle/vim-localvimrc
+	url = https://github.com/embear/vim-localvimrc.git
