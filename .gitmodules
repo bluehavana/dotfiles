@@ -91,3 +91,9 @@
 [submodule "home_dots/vim/bundle/vim-localvimrc"]
 	path = home_dots/vim/bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule "home_dots/vim/bundle/vim-rails"]
+	path = home_dots/vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "home_dots/vim/bundle/vim-bundler"]
+	path = home_dots/vim/bundle/vim-bundler
+	url = https://github.com/tpope/vim-bundler.git
