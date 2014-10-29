@@ -97,3 +97,21 @@
 [submodule "home_dots/vim/bundle/vim-bundler"]
 	path = home_dots/vim/bundle/vim-bundler
 	url = https://github.com/tpope/vim-bundler.git
+[submodule "home_dots/vim/bundle/YouCompleteMe"]
+	path = home_dots/vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "home_dots/vim/bundle/tern_for_vim"]
+	path = home_dots/vim/bundle/tern_for_vim
+	url = https://github.com/marijnh/tern_for_vim.git
+[submodule "home_dots/vim/bundle/vimproc.vim"]
+	path = home_dots/vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "home_dots/vim/bundle/unite.vim"]
+	path = home_dots/vim/bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "home_dots/vim/bundle/neomru.vim"]
+	path = home_dots/vim/bundle/neomru.vim
+	url = https://github.com/Shougo/neomru.vim.git
+[submodule "home_dots/vim/bundle/vim-autotag"]
+	path = home_dots/vim/bundle/vim-autotag
+	url = https://github.com/craigemery/vim-autotag.git
