@@ -115,3 +115,6 @@
 [submodule "home_dots/vim/bundle/vim-autotag"]
 	path = home_dots/vim/bundle/vim-autotag
 	url = https://github.com/craigemery/vim-autotag.git
+[submodule "home_dots/vim/bundle/unite-tag"]
+	path = home_dots/vim/bundle/unite-tag
+	url = https://github.com/tsukkee/unite-tag.git
