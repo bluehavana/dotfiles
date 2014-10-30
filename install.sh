@@ -145,9 +145,9 @@ sync_files() {
 }
 
 pushd "${SOURCE_DIR}" > /dev/null
-pushd "home_dots" > /dev/null
+pushd "copydots" > /dev/null
 
 sync_files "./" "${DEST_DIR}" || format_error "Error syncing dotfiles!"
 
-popd > /dev/null # home_dots
+popd > /dev/null # copydots
 popd > /dev/null # dirname $0
