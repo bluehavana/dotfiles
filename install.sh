@@ -8,9 +8,13 @@ DEST_DIR="${1:-$HOME}"
 SOURCE_DIR="$(dirname "${0}")"
 SOURCE_DIR="${2:-$SOURCE_DIR}"
 
+# Just playin': don't actually do anything
+PLAYIN="${PLAYIN:-false}"
+
 ERROR_COLOR=""
 STATUS_COLOR=""
 END_COLOR=""
+
 if [ -t 1 ] && tput colors &> /dev/null
 then
     STATUS_COLOR='\e[0;32m'
@@ -75,9 +79,12 @@ fixup_directory() {
 
     if ! [ -e "${dest_dir}" ]
     then
-        #cp -rvi "${f}" "${dest_dir}/.${clean_f}"
-        mkdir "${dest_dir}"
-        #sync_files "${f}" "${dest_dir}"
+        if "${PLAYIN}"
+        then
+            echo mkdir "${dest_dir}"
+        else
+            mkdir "${dest_dir}"
+        fi
         return 0
     elif [ -e "${dest_dir}" ] && ! [ -d "${dest_dir}" ]
     then
@@ -85,7 +92,6 @@ fixup_directory() {
         return 1
     elif [ -d "${dest_dir}" ]
     then
-        #sync_files "${f}" "${dest_dir}"
         return 0
     fi
     return 1
@@ -98,7 +104,15 @@ copy_file() {
 
     if [ ! -f "${dest}" ] || ! cmp "${src}" "${dest}" > /dev/null
     then
-        cp "${src}" "${dest}"
+        local status=0
+        if "${PLAYIN}"
+        then
+            echo cp "${src}" "${dest}"
+        else
+            cp "${src}" "${dest}"
+            status=$?
+        fi
+
         if [ "$?" -ne "0" ]
         then
             format_error "Could not copy into file ${dest}" >&2
