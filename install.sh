@@ -81,7 +81,7 @@ fixup_directory() {
     then
         if "${PLAYIN}"
         then
-            echo mkdir "${dest_dir}"
+            format_status playin: mkdir "${dest_dir}"
         else
             mkdir "${dest_dir}"
         fi
@@ -107,7 +107,8 @@ copy_file() {
         local status=0
         if "${PLAYIN}"
         then
-            echo cp "${src}" "${dest}"
+            format_status playin: cp "${src}" "${dest}"
+            return 0
         else
             cp "${src}" "${dest}"
             status=$?
