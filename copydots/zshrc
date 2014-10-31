@@ -279,3 +279,5 @@ if [[ -f "${SYNTAX_HIGHLIGHT_FILE}" ]]
 then
 	source "${SYNTAX_HIGHLIGHT_FILE}"
 fi
+
+unset -f set_pretty_prompt

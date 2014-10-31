@@ -32,6 +32,6 @@ then
     awesome_stderr=/dev/null
 fi
 
-unset testtype
+unset -f testtype
 
 exec awesome #>> "${awesome_stdout}" 2>> "${awesome_stderr}"
