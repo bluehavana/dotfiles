@@ -118,7 +118,7 @@ else
 endif
 
 " TODO: LESS PINKIE HURT!!!!
-" undo?
+" undo? waiting on undo since open
 " if has("persistant_undo")
 "   set undofile
 "   set undolevel=1000
@@ -157,7 +157,7 @@ if has("wildmenu")
     set wildmode=longest:full,full
 endif
 
-" rss is xml
+" synonyms for filetypes
 if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.json setfiletype javascript
@@ -196,3 +196,31 @@ runtime macros/matchit.vim
 " let g:rubycomplete_buffer_loading=1
 " let g:rubycomplete_classes_in_global=1
 " let g:rubycomplete_rails=1
+"
+" follow up reading from: http://www.infoq.com/presentations/Vim-From-Essentials-to-Mastery
+" Capital letter appends to register
+" CTRL-R register, CTRL-R CTRL-R, CTRL-R CTRL-O, CTRL-R CTRL-P
+" registers: ": "1-9 (stack of delete history) "/ "! ". (last inserted text) "% (current file) "# (alt
+"   file) "_ (blackhole) "= (expressions, can use math expressions)
+" use rdoc, pydoc instead of man
+" ex commands
+" nmap & run last substitute, s///& (keep flags from last substitute)
+" zz, zt, zb (move window around cursor)
+" !<motion> !! (filter line through program)
+" | (go to column)
+" ; , used with t,T,f,F to repeat forward and backward
+" preload registers in vimrc like let @d = strftime("%c")
+" search when loaded let @/ = "search term"
+" execute accidentally inserted command ^[ u@.
+" combine registers let @a = @a . @b . @c
+" capture output to a register redir @A
+" yank matches into register :g/pattern/y A (uppercase is important)
+" g< displays last command output
+" q: q/ in nomral mode bring up history windows, CTRL-F when already in them
+"
+" map motion commands
+"   CTRL-H CTRL-J CTRL-N CTRL-M CTRL-L (currently redraw) <Backspace>
+"
+" keys that totally need remapping:
+"   <space> <cr> <C-space> CTRL-CR <Backspace> <C-Backspace>
+" Need readline shortcuts in insert/command
