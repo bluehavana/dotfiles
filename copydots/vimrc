@@ -3,8 +3,8 @@
 " vim behaves like vim and not vi
 set nocompatible
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
+Helptags
 
 syntax on
 if has("autocmd")
