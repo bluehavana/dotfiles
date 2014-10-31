@@ -216,6 +216,12 @@ else
 	alias diff='diff -Nuar'
 fi
 
+# rvm completion
+if [[ -d "${HOME}/.zsh/completion" ]]
+then
+	fpath=(~/.zsh/completion/ $fpath)
+fi
+
 ########## cmdline vi fixes ###########
 # http://zshwiki.org/home/zle/bindkeys
 # home, end, insert, delete keys working
