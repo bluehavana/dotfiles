@@ -75,7 +75,23 @@ set showcmd
 set spelllang=eng_US
 set dictionary+=/usr/share/dict/words
 " TODO: sane viminfo defaults
-set viminfo+=n"$VIM/viminfo"
+" Marks are saved for the past 100 files
+set viminfo='100
+" number of searches to save, max
+set viminfo+=/1000
+" number of commands to save, max
+set viminfo+=:1000
+" number of lines saved for each register, max
+set viminfo+=<500
+" number of lines in input history to be saved, max
+set viminfo+=@500
+" size in kb for registers to be saved, max
+set viminfo+=s1000
+" ignore these directory paths
+set viminfo+=r/tmp,r/mnt/cdrom
+" viminfo is in .vim folder
+set viminfo+=n~/.vim/viminfo
+
 " character to show if a line is wrapped
 if exists('breakpoint')
   set showbreak=↪
