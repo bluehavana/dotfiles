@@ -10,6 +10,9 @@ setlocal showmatch
 " Show line and column number
 setlocal ruler
 
+" use :help for K
+setlocal keywordprg=
+
 " Set tab and \n to be visiable characters
 setlocal listchars=tab:»\ ,eol:¬
 setlocal list

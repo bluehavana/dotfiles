@@ -11,6 +11,9 @@ set showmatch
 set ruler
 set number
 
+" use ri for K
+setlocal keywordprg=ri
+
 " Set tab and \n to be visiable characters
 set listchars=tab:»\ ,eol:¬
 set list
