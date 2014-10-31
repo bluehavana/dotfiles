@@ -141,14 +141,14 @@ set tags+=.tags;
 " wildmode is semi-fuzzy matching
 if has("wildmenu")
     " Compiled files
-    set wildignore+=*.a,*.o
-    set wildignore+=*.class,*.pyc
-    " Images
-    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+    set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj,*
+    set wildignore+=*.class,*.pyc,*.pyo,*.luac
+    " Images/Media
+    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.avi,*.mpg,*.mp4,*.mp3
     " VCS stuff
     set wildignore+=.git,.hg,.svn
     " temperary files and tags files
-    set wildignore+=*~,*.swp,*.tmp,.tags,tags
+    set wildignore+=*~,*.swp,*.sw?,*.tmp,.tags,tags
     " LaTeX crap
     set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps
     set wildignore+=*.toc,*.ttt
