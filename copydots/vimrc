@@ -72,8 +72,10 @@ set report=0
 set showcmd
 
 " for spell checking
-set spelllang=eng_US
-set dictionary+=/usr/share/dict/words
+if exists("+spelllang")
+  set spelllang=en_US
+endif
+
 " TODO: sane viminfo defaults
 " Marks are saved for the past 100 files
 set viminfo='100
