@@ -207,7 +207,7 @@ export VISUAL=vim
 PATH="${PATH}":"${HOME}"/.rvm/bin
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
-alias v='vim --remote-silent'
+alias v='vim --servername "${DISPLAY-vim}" --remote-silent'
 
 if command -v colordiff &> /dev/null;
 then
