@@ -27,7 +27,7 @@ set incsearch
 " smoother redraw for faster terms
 set ttyfast
 " faster escape into modes
-set timeoutlen=300
+set timeoutlen=400
 set ttimeoutlen=50
 " let OS decide when to sync
 set nofsync
@@ -36,9 +36,13 @@ set lazyredraw
 " minimum number of lines to display around the curser line
 set scrolloff=3
 set sidescrolloff=3
+" allow visual block mode to not care about chars not being there
+set virtualedit
 " sane defaults for windows splits
 set splitbelow
 set splitright
+" show title in console bar
+set title
 " mouse in normal and visual mode
 set mouse=nv
 " Hide mouse when typing
@@ -49,23 +53,42 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 " commandline history
 set history=1000
-" allow modelines to be used; for files that have to declare their type as a
-" comment
+" so cursor stays in same column after commands: CTRL-D, CTRL-U, CTRL-B, CTRL-F,
+"   'G', 'H', 'M', 'L', gg, etc
+set nostartofline
+" only allow certain functions in cur dir vimrc's
+set secure
+"   allow vimrc settings in dir where vim is launched; .exrc .vimrc .gvimrc
+"   set exrc
+" allow modelines; files can declare options as a comment; # vim: noai:bla tw=2
 set modeline
 " switch to a window in which a buffer is already open
 set switchbuf=useopen
+" just one space for line joins, even after punctuation
+set nojoinspaces
+" Know what just happened, no matter the amount of lines changed
+set report=0
+" show extra info on right side of command line
+set showcmd
+
 " for spell checking
 set spelllang=eng_US
 set dictionary+=/usr/share/dict/words
 " TODO: sane viminfo defaults
 set viminfo+=n"$VIM/viminfo"
 " character to show if a line is wrapped
-set showbreak=↪
+if exists('breakpoint')
+  set showbreak=↪
+endif
+" <xx> as non-print characters instead of control style characters
+set display=uhex
 
 set background=dark
 colorscheme base16-monokai
 " force 256 term
 set t_Co=256
+" don't clear terminal background
+set t_ut=
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
