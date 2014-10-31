@@ -5,23 +5,14 @@ testtype () {
     type "$1" &> /dev/null
 }
 
-testtype xcompmgr && xcompmgr -cCfF -D 2 &
-testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
-
-[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
-
-# Needs to be loaded before xscreensaver
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
-
-# Applets
-testtype pasystray && pasystray &
-if testtype xscreensaver
+if testtype xcompmgr
 then
-    xscreensaver -nosplash &
-elif testtype gnome-screensaver
+    xcompmgr -cCfF -D 2 &
+elif testtype compton
 then
-    gnome-screensaver &
+    compton -cCf -D 2 &
 fi
+testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
 
 if pgrep "NetworkManager" &> /dev/null && testtype nm-applet
 then
@@ -42,6 +33,21 @@ then
     fi
 fi
 
+[ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
+# needs to be loaded before xscreensaver
+[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources" &
+
+# Applets
+testtype pasystray && pasystray &
+
+if testtype xscreensaver
+then
+    xscreensaver -nosplash &
+elif testtype gnome-screensaver
+then
+    gnome-screensaver &
+fi
+
 testtype empathy && empathy --start-hidden &
 
-unset testtype
+unset -f testtype
