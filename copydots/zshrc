@@ -54,13 +54,17 @@ setopt autocd
 # better expansion
 setopt extendedglob
 # don't store lines begining with space in history
-setopt histignorespace
+setopt hist_ignore_space
 # save space
-setopt histignoredups
+setopt hist_ignore_dups
+# take out unnecessary blanks from history
+setopt hist_reduce_blanks
 # allow # for comments on command line
-setopt interactivecomments
+setopt interactive_comments
 # troublesome feature
-setopt noflowcontrol
+setopt no_flow_control
+# autocomplete switches for aliases
+setopt complete_aliases
 
 # Not interactive?
 [ X"${-#*i}" != X"$-" ] || return
