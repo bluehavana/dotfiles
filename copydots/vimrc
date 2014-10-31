@@ -194,18 +194,25 @@ endif
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
-" Shougo/unite.vim " depends on Shougo/vimproc.vim
+" Shougo/unite.vim " depends on Shougo/vimproc.vim and Shougo/neomru.vim
+"   loaded, need to config
 " youcompleteme
+"   loaded, need to config
 " unit plugins?
+"   unite-tag: need to configure
 " vimez/vim-tmux or zepto/unite-tmux or vim-tmux-navigator
 " majutsushi/tagbar
-" elera/vim-javascript-syntax
-" pangloss/vim-javascript
-" marijnh/tern_for_vim " <- awesome js linter/checker/parser
+" elera/vim-javascript-syntax [? needed after tern?]
+" pangloss/vim-javascript [? needed after tern?]
+" CamelCaseMotion ( camel case text objects like ,w)
+" VimTextObject ( comma separated list of arguments text objects)
+" IndentObject
+"
 " let g:rubycomplete_buffer_loading=1
 " let g:rubycomplete_classes_in_global=1
 " let g:rubycomplete_rails=1
 "
+" Notes:
 " follow up reading from: http://www.infoq.com/presentations/Vim-From-Essentials-to-Mastery
 " Capital letter appends to register
 " CTRL-R register, CTRL-R CTRL-R, CTRL-R CTRL-O, CTRL-R CTRL-P
