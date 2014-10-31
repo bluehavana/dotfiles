@@ -182,6 +182,15 @@ let g:netrw_liststyle = 3
 " for textobj-rubyblock
 runtime macros/matchit.vim
 
+" mappings
+remap Y y$ " Y acts like D and C instead of yy
+
+" I like the unimpared mappings, but to be universal
+if exists(":nohlsearch")
+  nnoremap <C-L> :nohlsearch<C-R><C-L>
+endif
+
+
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
