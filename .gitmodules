@@ -67,9 +67,6 @@
 [submodule "copydots/vim/bundle/javascriptcomplete"]
 	path = copydots/vim/bundle/javascriptcomplete
 	url = git://github.com/jimf/javascriptcomplete
-[submodule "copydots/vim/bundle/vim-pandoc"]
-	path = copydots/vim/bundle/vim-pandoc
-	url = http://github.com/vim-pandoc/vim-pandoc
 [submodule "copydots/vim/bundle/base16-vim"]
 	path = copydots/vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
