@@ -58,12 +58,6 @@
 [submodule "copydots/vim/bundle/vim-javascript"]
 	path = copydots/vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
-[submodule "copydots/vim/bundle/OmniCppComplete"]
-	path = copydots/vim/bundle/OmniCppComplete
-	url = git://github.com/vim-scripts/OmniCppComplete.git
-[submodule "copydots/vim/bundle/pythoncomplete"]
-	path = copydots/vim/bundle/pythoncomplete
-	url = git://github.com/vim-scripts/pythoncomplete
 [submodule "copydots/vim/bundle/base16-vim"]
 	path = copydots/vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
