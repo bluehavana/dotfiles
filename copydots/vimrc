@@ -141,7 +141,7 @@ set tags+=.tags;
 " wildmode is semi-fuzzy matching
 if has("wildmenu")
     " Compiled files
-    set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj,*
+    set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj
     set wildignore+=*.class,*.pyc,*.pyo,*.luac
     " Images/Media
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.avi,*.mpg,*.mp4,*.mp3
