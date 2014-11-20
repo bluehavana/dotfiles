@@ -3,7 +3,7 @@
 " vim behaves like vim and not vi
 set nocompatible
 
-call pathogen#infect()
+execute pathogen#infect()
 Helptags
 
 syntax on
@@ -37,7 +37,7 @@ set lazyredraw
 set scrolloff=3
 set sidescrolloff=3
 " allow visual block mode to not care about chars not being there
-set virtualedit
+set virtualedit=block
 " sane defaults for windows splits
 set splitbelow
 set splitright
@@ -140,28 +140,51 @@ set tags+=.tags;
 " the wildmenu is a single line
 " wildmode is semi-fuzzy matching
 if has("wildmenu")
-    " Compiled files
-    set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj
-    set wildignore+=*.class,*.pyc,*.pyo,*.luac
-    " Images/Media
-    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.avi,*.mpg,*.mp4,*.mp3
-    " VCS stuff
-    set wildignore+=.git,.hg,.svn
-    " temperary files and tags files
-    set wildignore+=*~,*.swp,*.sw?,*.tmp,.tags,tags
-    " LaTeX crap
-    set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps
-    set wildignore+=*.toc,*.ttt
+  " Compiled files
+  set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj
+  set wildignore+=*.class,*.pyc,*.pyo,*.luac
+  " Images/Media
+  set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.avi,*.mpg,*.mp4,*.mp3
+  " VCS stuff
+  set wildignore+=.git,.hg,.svn
+  " temperary files and tags files
+  set wildignore+=*~,*.swp,*.sw?,*.tmp,.tags,tags
+  " LaTeX crap
+  set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff,*.out,*.pdf,*.ps
+  set wildignore+=*.toc,*.ttt
 
-    set wildmenu
-    set wildmode=longest:full,full
+  set wildmenu
+  set wildmode=longest:full,full
 endif
 
 " synonyms for filetypes
 if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.json setfiletype javascript
+"  autocmd FileType rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C
+".cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h .s,.S
 endif
+
+function SetProgDefaults()
+  setlocal smarttab
+  setlocal expandtab
+
+  " Highlight matching braces
+  setlocal showmatch
+  " Show line and column number
+  setlocal ruler
+
+  " Set tab and \n to be visiable characters
+  setlocal listchars=tab:»\ ,eol:¬
+  setlocal list
+
+  " Highlight extra whitespace at the end of a line
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  match ExtraWhitespace /\s\+$/
+
+  " Turn on DelimitMate for programming files
+  silent DelimitMateSwitch
+endfunction
 
 let g:ctrlp_cmd = "CtrlPMixed"
 let g:delimitMate_offByDefault = 1
@@ -183,7 +206,8 @@ let g:netrw_liststyle = 3
 runtime macros/matchit.vim
 
 " mappings
-remap Y y$ " Y acts like D and C instead of yy
+" Y acts like D and C instead of yy
+noremap Y y$
 
 " I like the unimpared mappings, but to be universal
 if exists(":nohlsearch")
