@@ -5,16 +5,13 @@ setlocal textwidth=80
 setlocal smarttab
 setlocal expandtab
 
-
-" setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
 " Highlight matching braces
 setlocal showmatch
 " Show line and column number
 setlocal ruler
 
-" Set tab and \n to be visiable characters
-setlocal listchars=tab:»\ ,eol:¬
+" Set tab, non-breaking space, and \n to be visiable characters
+setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑
 setlocal list
 
 " Highlight extra whitespace at the end of a line

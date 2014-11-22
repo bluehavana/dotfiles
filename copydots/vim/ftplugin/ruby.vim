@@ -14,8 +14,8 @@ set number
 " use ri for K
 setlocal keywordprg=ri
 
-" Set tab and \n to be visiable characters
-set listchars=tab:»\ ,eol:¬
+" Set tab, non-breaking space, and \n to be visiable characters
+setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑
 set list
 
 " Highlight extra whitespace at the end of a line

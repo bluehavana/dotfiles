@@ -17,8 +17,8 @@ setlocal ruler
 " use pydoc for K
 setlocal keywordprg=pydoc
 
-" Set tab and \n to be visiable characters
-setlocal listchars=tab:»\ ,eol:¬
+" Set tab, non-breaking space, and \n to be visiable characters
+setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑
 setlocal list
 
 " Highlight extra whitespace at the end of a line
