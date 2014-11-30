@@ -49,7 +49,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init( awful.util.getdir("config") .. "/themes/solarized_dark/theme.lua" )
+beautiful.init( awful.util.getdir("config") .. "/themes/base16-monokai/theme.lua" )
 beautiful.font = "Roboto 12"
 
 user_wallpaper = os.getenv("HOME") .. "/.background"
@@ -178,7 +178,7 @@ mytasklist.buttons = awful.util.table.join(
 
 -- {{{ simple  battery widget
 -- batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-batwidget = awful.widget.progressbar()
+local batwidget = awful.widget.progressbar()
 batwidget:set_width(8)
 batwidget:set_height(10)
 batwidget:set_vertical(true)
