@@ -103,3 +103,9 @@
 [submodule "copydots/vim/bundle/unite-tag"]
 	path = copydots/vim/bundle/unite-tag
 	url = https://github.com/tsukkee/unite-tag.git
+[submodule "copydots/vim/bundle/vim-misc"]
+	path = copydots/vim/bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "copydots/vim/bundle/vim-easytags"]
+	path = copydots/vim/bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
