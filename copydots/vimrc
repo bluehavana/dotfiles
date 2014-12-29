@@ -226,6 +226,13 @@ if exists('g:loaded_unite')
   endif
 endif
 
+"""""""""" easytagshttps://github.com/xolox/vim-misc
+
+if exists('g:loaded_easytags')
+  let g:easytags_async = 1
+  let g:easytags_dynamic_files = 1
+endif
+
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
