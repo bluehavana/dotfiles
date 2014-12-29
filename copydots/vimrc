@@ -214,6 +214,17 @@ if exists(":nohlsearch")
   nnoremap <C-L> :nohlsearch<C-R><C-L>
 endif
 
+""""""""""" Unite
+if exists('g:loaded_unite')
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  if exists('g:loaded_vimproc')
+    nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files
+             \ tag buffer_tab file_mru file_rec/async
+  else
+    nnoremap <silent <C-p> :Unite -start-insert -buffer-name=files
+             \ tag buffer_tab file_mru file_rec
+  endif
+endif
 
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
