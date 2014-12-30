@@ -214,16 +214,9 @@ if exists(":nohlsearch")
 endif
 
 """"""""""" Unite
-if exists('g:loaded_unite')
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  if exists('g:loaded_vimproc')
-    nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files
-             \ tag buffer_tab file_mru file_rec/async
-  else
-    nnoremap <silent <C-p> :Unite -start-insert -buffer-name=files
-             \ tag buffer_tab file_mru file_rec
-  endif
-endif
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <silent> <C-p> :<C-u>Unite -start-insert -buffer-name=files
+      \ tag buffer_tab file_mru file_rec/async<CR>
 
 """""""""" easytagshttps://github.com/xolox/vim-misc
 
