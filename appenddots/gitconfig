@@ -1,0 +1,13 @@
+[color]
+	ui = true
+[push]
+	default = simple
+
+[alias]
+	forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	cob = checkout -b
