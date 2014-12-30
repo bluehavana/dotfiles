@@ -183,6 +183,7 @@ function SetProgDefaults()
   match ExtraWhitespace /\s\+$/
 
   " need DelimiteMate substitute
+  " vim-scripts/AutoClose ?
 endfunction
 
 " syntastic good configs
@@ -232,20 +233,41 @@ endif
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
-" Shougo/unite.vim " depends on Shougo/vimproc.vim and Shougo/neomru.vim
-"   loaded, need to config
+" Shougo/unite.vim "
+"   find more keymappings and extend
+"     keymapping for preview mode
+"   unite-tag: need to configure
 " youcompleteme
 "   loaded, need to config
-" unit plugins?
-"   unite-tag: need to configure
+"   Linux crashes?
+" fholgado/minibufexpl.vim: fork, improved, small, tab like
 " vimez/vim-tmux or zepto/unite-tmux or vim-tmux-navigator
-" majutsushi/tagbar
-" elera/vim-javascript-syntax [? needed after tern?]
-" pangloss/vim-javascript [? needed after tern?]
-" CamelCaseMotion ( camel case text objects like ,w)
+" majutsushi/tagbar?
 " VimTextObject ( comma separated list of arguments text objects)
 " IndentObject
-"
+" godlygeek/tabular: format table based text
+"   http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+" garbas/vim-snipmate: snippets, seems to be default (janus, sp13)
+"   spf13/snipmate-snippets/tree/master/snippets: list of snippets
+"   honza/vim-snippets: janus list of snippets
+" bronson/vim-trailing-whitespace: simpler than trying to do it myself?
+" terryma/vim-multiple-cursors: visual selection on multiple areas, impressive
+" vim-scripts/ZoomWin: <C-w>o toggle instead of resettup
+" airblade/vim-gitgutter: git diff info in the vim gutter
+" othree/html5.vim
+" mustache/vim-mustache-handlebars
+" tpope/vim-surround: seems to be everywhere, verify keymappings
+" kien/rainbow_parentheses.vim: a definite need, look at matching colorscheme though
+" noahfrederick/vim-skeleton: templated files
+" suan/vim-instant-markdown: live preview of markdown
+" leshill/vim-json: needed even with JS syntax support?
+" mxw/vim-jsx: react syntax highlighting
+" skalnik/vim-vroom: if only for :RunNearestTest
+
+" Relook at Fugitive
+" Relook at vim-rails
+" Gundo vs. undotree?
+
 " let g:rubycomplete_buffer_loading=1
 " let g:rubycomplete_classes_in_global=1
 " let g:rubycomplete_rails=1
