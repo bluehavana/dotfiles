@@ -52,9 +52,6 @@
 [submodule "copydots/vim/bundle/vim-indent-object"]
 	path = copydots/vim/bundle/vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
-[submodule "copydots/vim/bundle/ctrlp.vim"]
-	path = copydots/vim/bundle/ctrlp.vim
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule "copydots/vim/bundle/vim-javascript"]
 	path = copydots/vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
