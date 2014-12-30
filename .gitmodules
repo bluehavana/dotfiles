@@ -106,3 +106,6 @@
 [submodule "copydots/vim/bundle/vim-easytags"]
 	path = copydots/vim/bundle/vim-easytags
 	url = https://github.com/xolox/vim-easytags.git
+[submodule "copydots/vim/bundle/vim-pathogen"]
+	path = copydots/vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen

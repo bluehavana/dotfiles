@@ -3,6 +3,8 @@
 " vim behaves like vim and not vi
 set nocompatible
 
+" manage pathogen from a submodule
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 Helptags
 
