@@ -215,8 +215,11 @@ endif
 
 """"""""""" Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" use relative paths for mru since path isn't an argument
+call unite#custom#source('neomru/file', 'matchers',
+                         \ ['converter_relative_abbr', 'matcher_default'])
 nnoremap <silent> <C-p> :<C-u>Unite -start-insert -buffer-name=files
-      \ tag buffer_tab file_mru file_rec/async<CR>
+      \ tag buffer_tab neomru/file file_rec/async<CR>
 
 """""""""" easytagshttps://github.com/xolox/vim-misc
 
