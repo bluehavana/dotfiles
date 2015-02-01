@@ -215,7 +215,21 @@ KEYTIMEOUT=1
 export EDITOR=vim
 export VISUAL=vim
 
-PATH="${PATH}":"${HOME}"/.rvm/bin
+if [[ -d "${HOME}/.rvm/bin" ]]
+then
+    PATH="${PATH}":"${HOME}/.rvm/bin"
+
+    # rvm completion
+    if [[ -d "${HOME}/.zsh/completion" ]]
+    then
+        fpath=(~/.zsh/completion/ $fpath)
+    fi
+fi
+
+if [[ -d "${HOME}/.rbenv/bin" ]]
+then
+    PATH="${HOME}/.rbenv/bin:${PATH}"
+fi
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias v='vim --servername "${DISPLAY-vim}" --remote-silent'
