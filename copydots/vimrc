@@ -9,7 +9,7 @@ execute pathogen#infect()
 Helptags
 
 syntax on
-if has("autocmd")
+if has('+autocmd')
     filetype plugin indent on
 endif
 
@@ -74,7 +74,7 @@ set report=0
 set showcmd
 
 " for spell checking
-if exists("+spelllang")
+if exists('+spelllang')
   set spelllang=en_US
 endif
 
@@ -141,7 +141,7 @@ set tags+=.tags;
 " wildmenu setup (tab completion with a builtin popup menu)
 " the wildmenu is a single line
 " wildmode is semi-fuzzy matching
-if has("wildmenu")
+if has('wildmenu')
   " Compiled files
   set wildignore+=*.a,*.o,*.so,*.exe,*.dll,*.obj
   set wildignore+=*.class,*.pyc,*.pyo,*.luac
@@ -160,14 +160,14 @@ if has("wildmenu")
 endif
 
 " synonyms for filetypes
-if has("autocmd")
+if has('autocmd')
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.json setfiletype javascript
 "  autocmd FileType rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C
 ".cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h .s,.S
 endif
 
-function SetProgDefaults()
+function! SetProgDefaults()
   setlocal smarttab
   setlocal expandtab
 
@@ -191,7 +191,7 @@ endfunction
 " syntastic good configs
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_pylint_exe = "pylint"
+let g:syntastic_python_pylint_exe = 'pylint'
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '⚡'
@@ -209,7 +209,7 @@ runtime macros/matchit.vim
 noremap Y y$
 
 " I like the unimpared mappings, but to be universal
-if exists(":nohlsearch")
+if exists(':nohlsearch')
   nnoremap <C-L> :nohlsearch<C-R><C-L>
 endif
 
@@ -232,13 +232,17 @@ endif
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
-" Shougo/unite.vim "
+" Shougo/unite.vim
 "   find more keymappings and extend
 "     keymapping for preview mode
 "   unite-tag: need to configure
+"   unite-outline: What is this?
+"   unite-help: looking at help files
 " youcompleteme
 "   loaded, need to config
 "   Linux crashes?
+" easytags
+"   find better tagging programs (jstags,(?ruby?), ?)
 " fholgado/minibufexpl.vim: fork, improved, small, tab like
 " vimez/vim-tmux or zepto/unite-tmux or vim-tmux-navigator
 " majutsushi/tagbar?
