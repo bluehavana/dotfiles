@@ -114,77 +114,77 @@ alias bx='bundle exec'
 DEFAULT_PROMPT=""
 CMDMODE_PROMPT=""
 
-set_pretty_prompt() {
-	add="%{$fg[cyan]%}%n%{$reset_color%}"
-	PS1=$add
-	CMDMODE_PROMPT=$add
+local set_pretty_prompt() {
+    add="%{$fg[cyan]%}%n%{$reset_color%}"
+    PS1=$add
+    CMDMODE_PROMPT=$add
 
-	PS1+=" ⚡ "
-	CMDMODE_PROMPT+=" %{$fg[yellow]%}⚡%{$reset_color%} "
+    PS1+=" ⚡ "
+    CMDMODE_PROMPT+=" %{$fg[yellow]%}⚡%{$reset_color%} "
 
-	case "$SSH_CLIENT$SSH_CONNECTION" in
-	?*)
-		add="%{$fg[magenta]%}%m "
-		PS1+=$add
-		CMDMODE_PROMPT+=$add
-		;;
-	*)
-		add="%{$fg[cyan]%}%m "
-		PS1+=$add
-		CMDMODE_PROMPT+=$add
-		;;
-	esac
-	add="%{$reset_color%}"
-	PS1+=$add
-	CMDMODE_PROMPT+=$add
+    case "$SSH_CLIENT$SSH_CONNECTION" in
+        ?*)
+            add="%{$fg[magenta]%}%m "
+            PS1+=$add
+            CMDMODE_PROMPT+=$add
+            ;;
+        *)
+            add="%{$fg[cyan]%}%m "
+            PS1+=$add
+            CMDMODE_PROMPT+=$add
+            ;;
+    esac
+    add="%{$reset_color%}"
+    PS1+=$add
+    CMDMODE_PROMPT+=$add
 
-	add="%(?.%{$fg[green]%}➤.%{$fg[red]%}➤)%{$reset_color%} "
-	PS1+=$add
-	CMDMODE_PROMPT+=$add
+    add="%(?.%{$fg[green]%}➤.%{$fg[red]%}➤)%{$reset_color%} "
+    PS1+=$add
+    CMDMODE_PROMPT+=$add
 
-	DEFAULT_PROMPT=$PS1
-	RPROMPT='%~'
+    DEFAULT_PROMPT=$PS1
+    RPROMPT='%~'
 }
 
 man_color() {
-	env \
-		LESS_TERMCAP_mb="$(printf "\e[1;31m"a)" \
-		LESS_TERMCAP_md="$(printf "\e[1;31m")" \
-		LESS_TERMCAP_me="$(printf "\e[0m")" \
-		LESS_TERMCAP_se="$(printf "\e[0m")" \
-		LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
-		LESS_TERMCAP_ue="$(printf "\e[0m")" \
-		LESS_TERMCAP_us="$(printf "\e[1;32m")" \
-			man "$@"
+    env \
+        LESS_TERMCAP_mb="$(printf "\e[1;31m"a)" \
+        LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+        LESS_TERMCAP_me="$(printf "\e[0m")" \
+        LESS_TERMCAP_se="$(printf "\e[0m")" \
+        LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+        LESS_TERMCAP_ue="$(printf "\e[0m")" \
+        LESS_TERMCAP_us="$(printf "\e[1;32m")" \
+        man "$@"
 }
 
 case $TERM in
-xterm*|tmux*|screen*|rxvt-unicode*)
-	set_pretty_prompt
-	alias man="man_color"
-	;;
-*)
-	PROMPT='%n @ %m:%~ $ '
-	DEFAULT_PROMPT="${PROMPT}"
-	CMDMODE_PROMPT="$PROMPT}"
-	;;
+    xterm*|tmux*|screen*|rxvt-unicode*)
+        set_pretty_prompt
+        alias man="man_color"
+        ;;
+    *)
+        PROMPT='%n @ %m:%~ $ '
+        DEFAULT_PROMPT="${PROMPT}"
+        CMDMODE_PROMPT="$PROMPT}"
+        ;;
 esac
 
 # vicmd mode indication hooks
 # http://zshwiki.org/home/zle/vi-mode
 precmd() {
-	PROMPT="${DEFAULT_PROMPT}"
+    PROMPT="${DEFAULT_PROMPT}"
 }
 
 zle-keymap-select() {
-	if [[ "${KEYMAP}" = "vicmd" ]]
-	then
-		PROMPT="${CMDMODE_PROMPT}"
-	else
-		PROMPT="${DEFAULT_PROMPT}"
-	fi
-	() { return $__prompt_status }
-	zle reset-prompt
+    if [[ "${KEYMAP}" = "vicmd" ]]
+    then
+        PROMPT="${CMDMODE_PROMPT}"
+    else
+        PROMPT="${DEFAULT_PROMPT}"
+    fi
+    () { return $__prompt_status }
+    zle reset-prompt
 }
 
 zle -N zle-keymap-select
@@ -251,47 +251,47 @@ key[Left]="${terminfo[kcub1]}"
 # setup key accordingly
 if [[ -n "${key[Home]}" ]]
 then
-	bindkey "${key[Home]}" beginning-of-line
+    bindkey "${key[Home]}" beginning-of-line
 fi
 if [[ -n "${key[End]}" ]]
 then
-	bindkey "${key[End]}" end-of-line
+    bindkey "${key[End]}" end-of-line
 fi
 if [[ -n "${key[Insert]}" ]]
 then
-	bindkey "${key[Insert]}" overwrite-mode
+    bindkey "${key[Insert]}" overwrite-mode
 fi
 if [[ -n "${key[Delete]}" ]]
 then
-	bindkey "${key[Delete]}" delete-char
+    bindkey "${key[Delete]}" delete-char
 fi
 if [[ -n "${key[Up]}" ]]
 then
-	bindkey "${key[Up]}" up-line-or-history
+    bindkey "${key[Up]}" up-line-or-history
 fi
 if [[ -n "${key[Down]}" ]]
 then
-	bindkey "${key[Down]}" down-line-or-history
+    bindkey "${key[Down]}" down-line-or-history
 fi
 if [[ -n "${key[Right]}" ]]
 then
-	bindkey "${key[Right]}" forward-char
+    bindkey "${key[Right]}" forward-char
 fi
 if [[ -n "${key[Left]}" ]]
 then
-	bindkey "${key[Left]}" backward-char
+    bindkey "${key[Left]}" backward-char
 fi
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     function zle-line-init () {
-        # for the vicmd mode stuff
-        typeset -g __prompt_status="$?"
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
+    # for the vicmd mode stuff
+    typeset -g __prompt_status="$?"
+    printf '%s' "${terminfo[smkx]}"
+}
+function zle-line-finish () {
+printf '%s' "${terminfo[rmkx]}"
     }
     zle -N zle-line-init
     zle -N zle-line-finish
@@ -301,7 +301,5 @@ fi
 SYNTAX_HIGHLIGHT_FILE="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 if [[ -f "${SYNTAX_HIGHLIGHT_FILE}" ]]
 then
-	source "${SYNTAX_HIGHLIGHT_FILE}"
+    source "${SYNTAX_HIGHLIGHT_FILE}"
 fi
-
-unset -f set_pretty_prompt
