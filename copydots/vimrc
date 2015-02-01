@@ -218,14 +218,20 @@ if exists(':nohlsearch')
   nnoremap <C-L> :nohlsearch<C-R><C-L>
 endif
 
-""""""""""" Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" use relative paths for mru since path isn't an argument
-call unite#custom#source('neomru/file', 'matchers',
-                         \ ['converter_relative_abbr', 'matcher_default'])
-nnoremap <silent> <C-p> :<C-u>Unite -start-insert -buffer-name=files
-      \ tag buffer_tab neomru/file file_rec/async<CR>
-
+if has('+lua')
+  """"""""""" Unite
+  let g:unite_source_file_rec_max_cache_files = 1000000
+  " rank based on fuzzy matching strength
+  call unite#custom#profile('proj_files', 'filters', 'sorter_rank')
+  " us fuzzy matcher by default
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  " use relative paths for mru since path isn't an argument
+  call unite#custom#source('neomru/file', 'matchers',
+                           \ ['matcher_project_files',
+                           \  'converter_relative_abbr', 'matcher_default'])
+  nnoremap <silent> <C-p> :<C-u>UniteWithCurrentDir -start-insert -resume
+        \ -buffer-name=proj_files buffer neomru/file tag file_rec/async<CR>
+endif
 """""""""" easytagshttps://github.com/xolox/vim-misc
 
 if exists('g:loaded_easytags')
