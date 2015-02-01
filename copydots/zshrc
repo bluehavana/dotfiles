@@ -101,11 +101,14 @@ alias -g x='exit'
 
 alias gits='git status'
 alias gita='git add'
-alias gitc='git commit'
+alias gitc='git checkout'
 alias gitd='git diff'
 alias gitl='git log'
 alias gitb='git branch'
 alias gitcb='git checkout -b'
+alias gitci='git commit'
+
+alias bx='bundle exec'
 
 # Used for vicmd mode indication
 DEFAULT_PROMPT=""
