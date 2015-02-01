@@ -224,7 +224,6 @@ fi
 if [[ -d "${HOME}/.rvm/bin" ]]
 then
     PATH="${PATH}":"${HOME}/.rvm/bin"
-
 fi
 
 if [[ -d "${HOME}/.rbenv/bin" ]]
