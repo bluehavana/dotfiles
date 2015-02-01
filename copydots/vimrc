@@ -51,8 +51,6 @@ set mouse=nv
 set mousehide
 " backspace works like normal
 set backspace=indent,eol,start
-" use system clipboard
-set clipboard=unnamed
 " commandline history
 set history=1000
 " so cursor stays in same column after commands: CTRL-D, CTRL-U, CTRL-B, CTRL-F,
@@ -72,6 +70,13 @@ set nojoinspaces
 set report=0
 " show extra info on right side of command line
 set showcmd
+
+" use system clipboard
+if has('+xterm_clipboard')
+  set clipboard=unnamedplus,unnamed
+elseif has('+xterm_clipboard')
+  set clipboard=unnamed
+endif
 
 " for spell checking
 if exists('+spelllang')
