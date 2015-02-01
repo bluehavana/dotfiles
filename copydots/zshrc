@@ -236,16 +236,40 @@ alias v='vim --servername "${DISPLAY-vim}" --remote-silent'
 
 if command -v colordiff &> /dev/null;
 then
-	alias diff='colordiff -Nuar'
+    alias diff='colordiff -Nuar'
 else
-	alias diff='diff -Nuar'
+    alias diff='diff -Nuar'
 fi
 
-# rvm completion
-if [[ -d "${HOME}/.zsh/completion" ]]
-then
-	fpath=(~/.zsh/completion/ $fpath)
-fi
+local -a rignore_dirs=(tmp vendor/cache vendor/bundle log vendor/assets
+spec/vcr)
+local -a rignore_file_patns=('*.min.js' 'jquery.*.js' 'plugins/*.scss'
+'plugins/*.js' '.tags', '.*.s[a-w][a-z]', '*.un~', 'Session.vim', '*~', '*.zip',
+'*.gz', '*.rar', '*.bz2', '*.rar', '*.jpg', '*.png', '*.so', '*.jar', '*.war')
+
+local ror_excludes=""
+
+for ignore_dir in "${rignore_dirs[@]}"
+do
+    rorg_excludes="${ignore_dir} --exclude-dir=$(printf %q "${ignore_dir}")"
+done
+
+for ignore_pat in "${rignore_file_patns[@]}"
+do
+    rorg_excludes="${ror_excludes} --exclude=$(printf %q "${ignore_pat}")"
+done
+
+alias rorg="grep --exclude-dir=vendor/bundle ${ignore_pat}"
+alias rorgb="grep ${ignore_pat}"
+
+local rorc_excludes=""
+for ignore_patn in ("${rignore_dirs[@]" "${rignore_file_patns[@]}")
+do
+    rorc_excludes="${ror_excludes} --exclude=$(printf %q "${ignore_patn}")"
+done
+
+alias rorctags="ctags --exclude=vendor/bundle ${ror_excludes}"
+alias rorctagsb="ctags ${ror_excludes}"
 
 ########## cmdline vi fixes ###########
 # http://zshwiki.org/home/zle/bindkeys
