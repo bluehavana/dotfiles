@@ -270,6 +270,8 @@ done
 
 alias rorctags="ctags --exclude=vendor/bundle ${ror_excludes}"
 alias rorctagsb="ctags ${ror_excludes}"
+# need to add yard-activerecord plugin to this command
+alias rordoc='bundle exec yard gems'
 
 ########## cmdline vi fixes ###########
 # http://zshwiki.org/home/zle/bindkeys
