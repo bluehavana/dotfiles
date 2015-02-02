@@ -114,7 +114,7 @@ alias bx='bundle exec'
 DEFAULT_PROMPT=""
 CMDMODE_PROMPT=""
 
-local set_pretty_prompt() {
+set_pretty_prompt() {
     add="%{$fg[cyan]%}%n%{$reset_color%}"
     PS1=$add
     CMDMODE_PROMPT=$add
@@ -241,32 +241,36 @@ else
     alias diff='diff -Nuar'
 fi
 
-local -a rignore_dirs=(tmp vendor/cache vendor/bundle log vendor/assets
-spec/vcr)
-local -a rignore_file_patns=('*.min.js' 'jquery.*.js' 'plugins/*.scss'
-'plugins/*.js' '.tags', '.*.s[a-w][a-z]', '*.un~', 'Session.vim', '*~', '*.zip',
-'*.gz', '*.rar', '*.bz2', '*.rar', '*.jpg', '*.png', '*.so', '*.jar', '*.war')
+typeset -a rignore_dirs
+rignore_dirs=('tmp' 'vendor/cache' 'vendor/bundle' 'log' 'vendor/assets' 'spec/vcr')
 
-local ror_excludes=""
+typeset -a rignore_file_patns
+rignore_file_patns=('*.min.js' 'jquery.*.js' 'plugins/*.scss' 'plugins/*.js' \
+'.tags' '.*.s[a-w][a-z]' '*.un~' 'Session.vim' '*~' '*.zip' '*.gz' '*.rar' \
+'*.bz2' '*.rar' '*.jpg' '*.png' '*.so' '*.jar' '*.war')
 
+rorg_excludes=""
 for ignore_dir in "${rignore_dirs[@]}"
 do
-    rorg_excludes="${ignore_dir} --exclude-dir=$(printf %q "${ignore_dir}")"
+    rorg_excludes="${rorg_excludes} --exclude-dir=$(printf %q "${ignore_dir}")"
 done
 
 for ignore_pat in "${rignore_file_patns[@]}"
 do
-    rorg_excludes="${ror_excludes} --exclude=$(printf %q "${ignore_pat}")"
+    rorg_excludes="${rorg_excludes} --exclude=$(printf %q "${ignore_pat}")"
 done
 
-alias rorg="grep --exclude-dir=vendor/bundle ${ignore_pat}"
-alias rorgb="grep ${ignore_pat}"
+alias rorg="grep --exclude-dir=vendor/bundle ${rorg_excludes}"
+alias rorgb="grep ${rorg_excludes}"
 
-local rorc_excludes=""
-for ignore_patn in ("${rignore_dirs[@]" "${rignore_file_patns[@]}")
+rorc_arr=${rignore_dirs}
+rorc_arr+=${rignore_file_patns}
+rorc_excludes=""
+for ignore_patn in "${rignore_dirs[@]}" "${rignore_file_patns[@]}"
 do
-    rorc_excludes="${ror_excludes} --exclude=$(printf %q "${ignore_patn}")"
+    rorc_excludes="${rorc_excludes} --exclude=$(printf %q "${ignore_patn}")"
 done
+unset rorc_arr
 
 alias rorctags="ctags --exclude=vendor/bundle ${rorc_excludes}"
 alias rorctagsb="ctags ${rorc_excludes}"
