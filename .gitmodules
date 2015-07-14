@@ -109,3 +109,6 @@
 [submodule "copydots/vim/bundle/vim-jsx"]
 	path = copydots/vim/bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule "copydots/vim/bundle/vim-emblem"]
+	path = copydots/vim/bundle/vim-emblem
+	url = https://github.com/heartsentwined/vim-emblem.git
