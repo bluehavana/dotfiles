@@ -9,7 +9,7 @@ execute pathogen#infect()
 Helptags
 
 syntax on
-if has('+autocmd')
+if has('autocmd')
     filetype plugin indent on
 endif
 
@@ -46,11 +46,13 @@ set splitright
 " show title in console bar
 set title
 " mouse in normal and visual mode
-set mouse=nv
+set mouse=nvic
 " Hide mouse when typing
 set mousehide
 " backspace works like normal
 set backspace=indent,eol,start
+" Use system clipboard
+set clipboard=unnamed
 " commandline history
 set history=1000
 " so cursor stays in same column after commands: CTRL-D, CTRL-U, CTRL-B, CTRL-F,
@@ -71,15 +73,13 @@ set report=0
 " show extra info on right side of command line
 set showcmd
 
-" use system clipboard
-if has('+xterm_clipboard')
+" use system clipboards (includes '+' as well)
+if has('unnamedplus')
   set clipboard=unnamedplus,unnamed
-elseif has('+xterm_clipboard')
-  set clipboard=unnamed
 endif
 
 " for spell checking
-if exists('+spelllang')
+if exists('spelllang')
   set spelllang=en_US
 endif
 
@@ -118,7 +118,7 @@ set t_ut=
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Mark past 80 columns
-if exists('+colorcolumn')
+if exists('colorcolumn')
   set colorcolumn=81
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
@@ -136,9 +136,12 @@ endif
 " Find files recusively in current directory
 set path+=**
 " Don't have to look for suffixes in find
-set suffixesadd=.rb,.py,.coffee,.js,.sh,.sass,.scss,.html,.erb,.css,.java,.C
-set suffixesadd+=.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc,.c,.h
-set suffixesadd+=.s,.S
+set suffixesadd=.rb,.py,.coffee,.js,.sh,.pl,.pm
+set suffixesadd+=.erl,.go,.php
+set suffixesadd+=.java,.jsp,.cs,.c,.h
+set suffixesadd+=.C,.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc
+set suffixesadd+=.s,.S,.asm
+set suffixesadd+=.erb,.sass,.scss,.html,.css,.json
 
 " Hidden tags file
 set tags+=.tags;
@@ -215,10 +218,10 @@ noremap Y y$
 
 " I like the unimpared mappings, but to be universal
 if exists(':nohlsearch')
-  nnoremap <C-L> :nohlsearch<C-R><C-L>
+  nnoremap <C-L> :nohlsearch<CR><C-L>
 endif
 
-if has('+lua')
+if has('lua')
   """"""""""" Unite
   let g:unite_source_file_rec_max_cache_files = 1000000
   " rank based on fuzzy matching strength
@@ -234,12 +237,14 @@ if has('+lua')
 endif
 """""""""" easytagshttps://github.com/xolox/vim-misc
 
-if exists('g:loaded_easytags')
-  let g:easytags_async = 1
-  let g:easytags_dynamic_files = 1
-  let g:easytags_file = '~/.vim/easytags'
-  let g:easytags_include_members = 1
-endif
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.vim/easytags'
+let g:easytags_include_members = 1
+
+""""""""""" localvimrc
+let g:localvimrc_persistent = 1
+let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 
 " Plugin TODO:
 " vim-signature " <- show marks next to line numbers
@@ -278,6 +283,13 @@ endif
 " leshill/vim-json: needed even with JS syntax support?
 " mxw/vim-jsx: react syntax highlighting
 " skalnik/vim-vroom: if only for :RunNearestTest
+" justinmk/vim-sneak
+" jiangmiao/auto-pairs instead of delimitMate, better
+" lucapette/vim-textobj-underscore
+" ggreer/the_silver_searcher  ack/grep like, supposed to be best
+" tpope/vim-dispatch test helper, quick-fix, etc
+" gabrielelana/vim-markdown  supposed better markdown
+" suan/vim-instant-markdown  markdown preview
 
 " Relook at Fugitive
 " Relook at vim-rails
