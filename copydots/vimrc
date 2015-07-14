@@ -238,16 +238,36 @@ endif
 if has('lua')
   """"""""""" Unite
   let g:unite_source_file_rec_max_cache_files = 1000000
+
+  call unite#custom#profile('default', 'context', {'prompt': '➤ '})
   " rank based on fuzzy matching strength
   call unite#custom#profile('proj_files', 'filters', 'sorter_rank')
+  call unite#custom#profile('files', 'filters', 'sorter_rank')
   " us fuzzy matcher by default
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   " use relative paths for mru since path isn't an argument
   call unite#custom#source('neomru/file', 'matchers',
                            \ ['matcher_project_files',
                            \  'converter_relative_abbr', 'matcher_default'])
-  nnoremap <silent> <C-p> :<C-u>UniteWithCurrentDir -start-insert -resume
-        \ -buffer-name=proj_files buffer neomru/file tag file_rec/async<CR>
+  nnoremap <silent> <CR> :<C-u>UniteWithCurrentDir
+        \ -start-insert -resume -buffer-name=files -silent -short-source-names
+        \ buffer_tab buffer neomru/file<CR>
+
+  nnoremap <silent> <C-P> :<C-u>UniteWithCurrentDir
+        \ -start-insert -resume -buffer-name=proj_files -auto-preview -silent
+        \ -short-source-names
+        \ neomru/file file_rec/async buffer<CR>
+
+  autocmd FileType unite call s:unite_settings()
+  function! s:unite_settings()
+    imap <silent><buffer> <Tab> <Plug>(unite_select_next_line)
+    nmap <silent><buffer> <Tab> <Plug>(unite_select_next_line)
+    imap <silent><buffer> <S-Tab> <Plug>(unite_select_previous_line)
+    nmap <silent><buffer> <S-Tab> <Plug>(unite_select_previous_line)
+    imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
+    imap <silent><buffer> <C-\><C-\> <Plug>(unite_rotate_next_source)
+    nmap <silent><buffer> <C-\><C-\> <Plug>(unite_rotate_next_source)
+  endfunction
 endif
 """""""""" easytagshttps://github.com/xolox/vim-misc
 
