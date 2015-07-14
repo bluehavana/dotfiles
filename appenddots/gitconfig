@@ -2,7 +2,6 @@
 	ui = true
 [push]
 	default = simple
-
 [alias]
 	forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
 	co = checkout
