@@ -204,10 +204,24 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '⚡'
 let g:syntastic_style_warning_symbol = '⚡'
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open = 1
 
 " netrw treeview
 let g:netrw_liststyle = 3
+
+" programming left overs
+let g:netrw_list_hide = '*.a,*.o,*.so,*.exe,*.dll,*.obj'
+let g:netrw_list_hide .= '*.class,*.pyc,*.pyo,*.luac'
+" Images/Media
+let g:netrw_list_hide .= '*.bmp,*.gif,*.ico,*.jpg,*.png,*.avi,*.mpg,*.mp4,*.mp3'
+" VCS stuff
+let g:netrw_list_hide .= '.git,.hg,.svn'
+" temperary files and tags files
+let g:netrw_list_hide .= '*~,*.swp,*.sw?,*.tmp,.tags,tags'
+" LaTeX crap
+let g:netrw_list_hide .= '*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff'
+let g:netrw_list_hide .= '*.out,*.pdf,*.ps'
+let g:netrw_list_hide .= '*.toc,*.ttt'
 
 " for textobj-rubyblock
 runtime macros/matchit.vim
