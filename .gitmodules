@@ -106,3 +106,6 @@
 [submodule "copydots/vim/bundle/vim-pathogen"]
 	path = copydots/vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
+[submodule "copydots/vim/bundle/vim-jsx"]
+	path = copydots/vim/bundle/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
