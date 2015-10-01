@@ -44,8 +44,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
@@ -55,8 +55,6 @@ setopt autocd
 setopt extendedglob
 # don't store lines begining with space in history
 setopt hist_ignore_space
-# save space
-setopt hist_ignore_dups
 # take out unnecessary blanks from history
 setopt hist_reduce_blanks
 # allow # for comments on command line
@@ -66,12 +64,32 @@ setopt no_flow_control
 # autocomplete switches for aliases
 setopt complete_aliases
 
+
 # Not interactive?
 [ X"${-#*i}" != X"$-" ] || return
 
-setopt hist_ignore_all_dups
 autoload -U colors
 colors
+
+# Save timestamps about commands, also display with the
+# 'history' command
+setopt extended_history
+
+# The newest unique command is the only one
+# shown, older dups are not present
+setopt hist_ignore_all_dups
+
+# Append history to the histfile immediately after a
+# command completes
+setopt inc_append_history_time
+
+# completion of command line switches for aliases
+setopt completealiases
+
+# Would love this to work with recording commands to
+# the histfile while not showing up in interactive
+# prompts, does nothign at the moment
+# setopt hist_find_no_dups
 
 # you get permission when I tell you
 umask 077
@@ -331,12 +349,12 @@ fi
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     function zle-line-init () {
-    # for the vicmd mode stuff
-    typeset -g __prompt_status="$?"
-    printf '%s' "${terminfo[smkx]}"
-}
-function zle-line-finish () {
-printf '%s' "${terminfo[rmkx]}"
+        # for the vicmd mode stuff
+        typeset -g __prompt_status="$?"
+        printf '%s' "${terminfo[smkx]}"
+    }
+    function zle-line-finish () {
+        printf '%s' "${terminfo[rmkx]}"
     }
     zle -N zle-line-init
     zle -N zle-line-finish
