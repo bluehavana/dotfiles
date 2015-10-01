@@ -1,22 +1,20 @@
 setlocal tabstop=2
-setlocal shiftwidth=2
 setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal textwidth=80
 setlocal expandtab
 
-set smartindent
-
 " Highlight matching braces
-set showmatch
+setlocal showmatch
 " Show line and column number
-set ruler
-set number
+setlocal ruler
 
 " use ri for K
 setlocal keywordprg=ri
 
 " Set tab, non-breaking space, and \n to be visiable characters
 setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑
-set list
+setlocal list
 
 " Highlight extra whitespace at the end of a line
 highlight ExtraWhitespace ctermbg=red guibg=red

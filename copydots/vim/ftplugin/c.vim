@@ -1,15 +1,13 @@
 setlocal tabstop=2
-setlocal shiftwidth=2
 setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal textwidth=80
 setlocal expandtab
-
-setlocal smartindent
 
 " Highlight matching braces
 setlocal showmatch
 " Show line and column number
 setlocal ruler
-setlocal number
 
 " Set tab, non-breaking space, and \n to be visiable characters
 setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑

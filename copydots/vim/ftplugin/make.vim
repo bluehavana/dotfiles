@@ -7,7 +7,6 @@ setlocal noexpandtab
 setlocal showmatch
 " Show line and column number
 setlocal ruler
-setlocal number
 
 " Set tab, non-breaking space, and \n to be visiable characters
 setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑

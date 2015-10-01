@@ -2,7 +2,6 @@ setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal textwidth=80
-setlocal smarttab
 setlocal expandtab
 
 " Highlight matching braces
@@ -11,7 +10,7 @@ setlocal showmatch
 setlocal ruler
 
 " use :help for K
-setlocal keywordprg=
+setlocal keywordprg=:help
 
 " Set tab, non-breaking space, and \n to be visiable characters
 setlocal listchars=tab:»\ ,eol:¬,nbsp:⚑
