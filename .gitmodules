@@ -112,3 +112,6 @@
 [submodule "copydots/vim/bundle/vim-emblem"]
 	path = copydots/vim/bundle/vim-emblem
 	url = https://github.com/heartsentwined/vim-emblem.git
+[submodule "copydots/vim/bundle/Arduino-syntax-file"]
+	path = copydots/vim/bundle/Arduino-syntax-file
+	url = https://github.com/vim-scripts/Arduino-syntax-file.git
