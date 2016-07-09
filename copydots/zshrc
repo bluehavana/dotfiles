@@ -247,6 +247,7 @@ fi
 if [[ -d "${HOME}/.rbenv/bin" ]]
 then
     PATH="${HOME}/.rbenv/bin:${PATH}"
+    eval "$(rbenv init -)"
 fi
 
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
