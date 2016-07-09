@@ -291,7 +291,6 @@ let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 "   unite-help: looking at help files
 " youcompleteme
 "   loaded, need to config
-"   Linux crashes?
 " easytags
 "   find better tagging programs (jstags,(?ruby?), ?)
 " fholgado/minibufexpl.vim: fork, improved, small, tab like
@@ -324,6 +323,19 @@ let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 " tpope/vim-dispatch test helper, quick-fix, etc
 " gabrielelana/vim-markdown  supposed better markdown
 " suan/vim-instant-markdown  markdown preview
+"
+" External installations:
+" gem install rubocop \   # ruby linter
+"             haml \      # syntax checking
+"             haml-lint \ # linter
+"             sass        # sass syntax checking
+" npm install -g csslint jsonlint coffescript js-yaml
+" pacman -S the_silver_surfer # need 'ag.vim', for the 'ag' search command
+" pacman -S tidy # html
+" pacman -S lua # for lua checking
+" pacman -S clang-tools-extra # c linter
+" pacman -S splint # c vuln and mistake checking
+" pacman -S shellcheck # sh/bash checker
 
 " Relook at Fugitive
 " Relook at vim-rails
