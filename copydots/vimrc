@@ -347,6 +347,7 @@ let g:localvimrc_persistent = 1
 let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 
 " Plugin TODO:
+" vimwiki https://github.com/vimwiki/vimwiki.git
 " vim-signature " <- show marks next to line numbers
 " tpope/vim-vinegar.git
 " Shougo/unite.vim
@@ -360,6 +361,7 @@ let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 " easytags
 "   find better tagging programs (jstags,(?ruby?), ?)
 " fholgado/minibufexpl.vim: fork, improved, small, tab like
+" tpope/vim-rsi " readline keybindings in normal/command mode
 " vimez/vim-tmux or zepto/unite-tmux or vim-tmux-navigator
 " majutsushi/tagbar?
 " VimTextObject ( comma separated list of arguments text objects)
@@ -392,6 +394,8 @@ let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 "
 " External installations:
 " pacman -S the_silver_surfer # need 'ag.vim', for the 'ag' search command
+" gem install ripper-tags # ripper-tags -f .tags -R --exclude=vendor
+"
 
 " Relook at Fugitive
 " Relook at vim-rails
