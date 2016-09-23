@@ -279,8 +279,8 @@ do
     rorg_excludes="${rorg_excludes} --exclude=$(printf %q "${ignore_pat}")"
 done
 
-alias rorg="grep --exclude-dir=vendor/bundle ${rorg_excludes}"
-alias rorgb="grep ${rorg_excludes}"
+alias grepror="grep --exclude-dir=vendor/bundle ${rorg_excludes}"
+alias greprorb="grep ${rorg_excludes}"
 
 rorc_arr=${rignore_dirs}
 rorc_arr+=${rignore_file_patns}
@@ -291,8 +291,8 @@ do
 done
 unset rorc_arr
 
-alias rorctags="ctags --exclude=vendor/bundle ${rorc_excludes}"
-alias rorctagsb="ctags ${rorc_excludes}"
+alias ctagsror="ctags --exclude=vendor/bundle ${rorc_excludes}"
+alias ctagsrorb="ctags ${rorc_excludes}"
 
 # need to add yard-activerecord plugin to this command
 alias rordoc='bundle exec yard gems'
