@@ -16,6 +16,16 @@ then
     unset f
 fi
 
+if testtype xinput
+then
+    if (xinput list 'SynPS/2 Synaptics TouchPad' &> /dev/null) \
+        && (xinput list 'TPPS/2 IBM TrackPoint' &> /dev/null)
+    then
+        touchpad_id="$(xinput list --id-only 'SynPS/2 Synaptics TouchPad')"
+        xinput disable "${touchpad_id}"
+    fi
+fi
+
 # For Chrome proxy settings
 # export DESKTOP_SESSION=gnome
 
