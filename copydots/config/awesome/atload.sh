@@ -36,7 +36,7 @@ fi
 [ -f "${HOME}/.Xmodmap" ] && xmodmap "${HOME}/.Xmodmap" &
 # needs to be loaded before xscreensaver
 # also can't be backgrounded since it takes a while
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
+[ -f "${HOME}/.Xresources" ] && xrdb -merge -I"${HOME}" "${HOME}/.Xresources"
 
 # Applets
 testtype pasystray && pasystray &
