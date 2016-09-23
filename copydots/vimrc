@@ -199,12 +199,78 @@ endfunction
 " syntastic good configs
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_pylint_exe = 'pylint'
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '⚡'
 let g:syntastic_style_warning_symbol = '⚡'
 let g:syntastic_check_on_open = 1
+
+" auto supported syntastic checkers:
+" gem install sass
+" npm install -g coffeescript
+" pacman -S bison # for yacc linting
+
+" pacman -S clang-tools-extra # c linter
+" pacman -S splint # c vuln and mistake checking
+let g:syntastic_c_checkers = ['clang_check', 'splint']
+" pacman -S mono
+let g:syntastic_cs_checkers = ['mcs']
+let g:syntastic_cpp_checkers = ['clang_check']
+" npm install -g csslint
+let g:syntastic_css_checkers = ['csslint']
+" gem install haml haml-lint
+let g:syntastic_haml_checkers = ['haml', 'haml_lint']
+let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
+" cower -d html-tidy # html
+" See below for textlint stuff
+let g:syntastic_html_checkers = ['eslint', 'textlint', 'tidy']
+" npm install -g tern eslint
+let g:syntastic_javascript_checkers = ['eslint', 'tern_lint']
+" pacman -S lua
+" cower -d luacheck
+let g:syntastic_lua_checkers = ['luac', 'luacheck']
+" See below for textlint stuff
+let g:syntastic_markdown_checkers = ['textlint']
+" pip install prospector py3kwarn
+let g:syntastic_python_checkers = ['prospector', 'py3kwarn']
+" gem install rubocop
+let g:syntastic_ruby_checkers = ['rubocop']
+" pacman -S shellcheck # sh/bash checker
+let g:syntastic_sh_checkers = ['bashate', 'shellcheck']
+" cower -d sqlint
+let g:syntastic_sql_checkers = ['sqlint']
+let g:syntastic_text_checkers = ['language_check', 'textlint']
+" pacman -S libxml2
+let g:syntastic_xml_checkers = ['xmllint']
+" npm install -g jsyaml
+let g:syntastic_yaml_checkers = ['jsyaml']
+
+" ** textlint **
+"
+" npm install -g textlint # although it is recommended to only install in
+"                         # project specific dirs
+"
+" possible textlint rules:
+"   # don't allow more than one sentence to start with a conjunction per
+"   #   paragraph
+"   textlint-rule-no-start-duplicated-conjunction
+"   # only 4 commas per sentence by default
+"   textlint-rule-max-comma
+"   # no ! or ?
+"   textlint-rule-no-exclamation-question-mark
+"   textlint-rule-unexpanded-acronym
+"   # uses the rousseau npm package
+"   textlint-rule-rousseau
+"   # uses the alex npm package
+"   # "Catch insensitive, inconsiderate writing
+"   textlint-rule-alex
+"   textlint-rule-common-misspellings
+"   # kind of like rousseau, uses write-good npm package
+"   textlint-rule-write-good
+"   # pacman -S hunspell hunspell-en
+"   textlint-rule-spellchecker
+"   textlint-plugin-html
 
 " netrw treeview
 let g:netrw_liststyle = 3
@@ -325,17 +391,7 @@ let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"
 " suan/vim-instant-markdown  markdown preview
 "
 " External installations:
-" gem install rubocop \   # ruby linter
-"             haml \      # syntax checking
-"             haml-lint \ # linter
-"             sass        # sass syntax checking
-" npm install -g csslint jsonlint coffescript js-yaml
 " pacman -S the_silver_surfer # need 'ag.vim', for the 'ag' search command
-" pacman -S tidy # html
-" pacman -S lua # for lua checking
-" pacman -S clang-tools-extra # c linter
-" pacman -S splint # c vuln and mistake checking
-" pacman -S shellcheck # sh/bash checker
 
 " Relook at Fugitive
 " Relook at vim-rails
