@@ -75,11 +75,11 @@ set showcmd
 
 " use system clipboards (includes '+' as well)
 if has('unnamedplus')
-  set clipboard=unnamedplus,unnamed
+  set clipboard=unnamed,unnamedplus
 endif
 
 " for spell checking
-if exists('spelllang')
+if exists('+spelllang')
   set spelllang=en_US
 endif
 
@@ -102,7 +102,7 @@ set viminfo+=r/tmp,r/mnt/cdrom
 set viminfo+=n~/.vim/viminfo
 
 " character to show if a line is wrapped
-if exists('breakpoint')
+if has('linebreak')
   set showbreak=↪
 endif
 " <xx> as non-print characters instead of control style characters
@@ -118,7 +118,7 @@ set t_ut=
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Mark past 80 columns
-if exists('colorcolumn')
+if exists('+colorcolumn')
   set colorcolumn=81
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>81v.\+', -1)
@@ -297,7 +297,7 @@ let g:netrw_list_hide .= '*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.fff'
 let g:netrw_list_hide .= '*.out,*.pdf,*.ps'
 let g:netrw_list_hide .= '*.toc,*.ttt'
 
-" for textobj-rubyblock
+" Built into vim, for textobj-rubyblock
 runtime macros/matchit.vim
 
 " mappings
