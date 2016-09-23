@@ -191,10 +191,18 @@ function! SetProgDefaults()
   " Highlight extra whitespace at the end of a line
   highlight ExtraWhitespace ctermbg=red guibg=red
   match ExtraWhitespace /\s\+$/
-
-  " need DelimiteMate substitute
-  " vim-scripts/AutoClose ?
 endfunction
+
+" plugin install:
+"     # if starting from scratch dotfiles repo
+"     $ git submodule update --init --recursive
+"     # copy files into ~/.vim
+"     $ cd ~/.vim/bundle/YouCompleteMe
+"     $ ./install.py --all
+"     $ cd ~/.vim/bundle/tern_for_vim
+"     $ npm install
+"     $ cd ~/.vim/bundle/vimproc.vim
+"     $ make
 
 " syntastic good configs
 let g:syntastic_aggregate_errors = 1
