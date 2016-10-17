@@ -318,22 +318,23 @@ if has('lua')
 
   call unite#custom#profile('default', 'context', {'prompt': '➤ '})
   " rank based on fuzzy matching strength
-  call unite#custom#profile('proj_files', 'filters', 'sorter_rank')
-  call unite#custom#profile('files', 'filters', 'sorter_rank')
+  call unite#custom#profile('proj_files', 'filters', 'sorter_selecta')
+  call unite#custom#profile('buffers', 'filters', 'sorter_selecta')
   " us fuzzy matcher by default
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   " use relative paths for mru since path isn't an argument
   call unite#custom#source('neomru/file', 'matchers',
                            \ ['matcher_project_files',
-                           \  'converter_relative_abbr', 'matcher_default'])
-  nnoremap <silent> <CR> :<C-u>UniteWithCurrentDir
-        \ -start-insert -resume -buffer-name=files -silent -short-source-names
-        \ buffer_tab buffer neomru/file<CR>
+                           \  'converter_relative_abbr', 'sorter_selecta'])
+
+  nnoremap <silent> <CR> :<C-u>Unite
+    \ -start-insert -buffer-name=buffers -silent -short-source-names
+    \ buffer_tab buffer neomru/file<CR>
 
   nnoremap <silent> <C-P> :<C-u>UniteWithCurrentDir
-        \ -start-insert -resume -buffer-name=proj_files -auto-preview -silent
-        \ -short-source-names
-        \ neomru/file file_rec/async buffer<CR>
+    \ -input= -resume -no-restore -start-insert
+    \ -buffer-name=proj_files -silent -short-source-names
+    \ file_rec/async<CR>
 
   autocmd FileType unite call s:unite_settings()
   function! s:unite_settings()
