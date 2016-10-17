@@ -72,6 +72,8 @@ set nojoinspaces
 set report=0
 " show extra info on right side of command line
 set showcmd
+" swap files are too slow and file watchers might have issues
+set noswapfile
 
 " use system clipboards (includes '+' as well)
 if has('unnamedplus')
@@ -142,6 +144,7 @@ set suffixesadd+=.java,.jsp,.cs,.c,.h
 set suffixesadd+=.C,.cc,.CPP,.cxx,.c++,.cpp,.H,.hh,.HPP,.hxx,.h++,.hpp,.tcc
 set suffixesadd+=.s,.S,.asm
 set suffixesadd+=.erb,.sass,.scss,.html,.css,.json
+set suffixesadd+=.md
 
 " Hidden tags file
 set tags+=.tags;
