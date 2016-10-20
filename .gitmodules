@@ -1,18 +1,9 @@
 [submodule "copydots/vim/bundle/vim-colors-solarized"]
 	path = copydots/vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "copydots/vim/bundle/vim-haml"]
-	path = copydots/vim/bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
 [submodule "copydots/vim/bundle/vim-cucumber"]
 	path = copydots/vim/bundle/vim-cucumber
 	url = git://github.com/tpope/vim-cucumber.git
-[submodule "copydots/vim/bundle/vim-markdown"]
-	path = copydots/vim/bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
-[submodule "copydots/vim/bundle/scala-vim-support"]
-	path = copydots/vim/bundle/scala-vim-support
-	url = git://github.com/rosstimson/scala-vim-support.git
 [submodule "copydots/vim/bundle/vim-handlebars"]
 	path = copydots/vim/bundle/vim-handlebars
 	url = git://github.com/nono/vim-handlebars.git
@@ -31,15 +22,6 @@
 [submodule "copydots/vim/bundle/vim-ruby"]
 	path = copydots/vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule "copydots/vim/bundle/vim-less"]
-	path = copydots/vim/bundle/vim-less
-	url = git://github.com/groenewege/vim-less.git
-[submodule "copydots/vim/bundle/vim-haskell"]
-	path = copydots/vim/bundle/vim-haskell
-	url = git://github.com/wlangstroth/vim-haskell.git
-[submodule "copydots/vim/bundle/vimerl"]
-	path = copydots/vim/bundle/vimerl
-	url = git://github.com/jimenezrick/vimerl.git
 [submodule "copydots/vim/bundle/vim-unimpaired"]
 	path = copydots/vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
@@ -109,9 +91,6 @@
 [submodule "copydots/vim/bundle/vim-emblem"]
 	path = copydots/vim/bundle/vim-emblem
 	url = https://github.com/heartsentwined/vim-emblem.git
-[submodule "copydots/vim/bundle/Arduino-syntax-file"]
-	path = copydots/vim/bundle/Arduino-syntax-file
-	url = https://github.com/vim-scripts/Arduino-syntax-file.git
 [submodule "copydots/vim/bundle/vim-csharp"]
 	path = copydots/vim/bundle/vim-csharp
 	url = https://github.com/OrangeT/vim-csharp.git
