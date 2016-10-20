@@ -94,3 +94,6 @@
 [submodule "copydots/vim/bundle/vim-csharp"]
 	path = copydots/vim/bundle/vim-csharp
 	url = https://github.com/OrangeT/vim-csharp.git
+[submodule "copydots/vim/bundle/vim-surround"]
+	path = copydots/vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
