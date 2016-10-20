@@ -8,7 +8,10 @@ set show-all-if-unmodified on
 set blink-matching-parens on
 set colored-completion-prefix on
 set colored-stats on
-set show-mode-in-prompt on
+
+# This might have to be per application. Pry had rendering issues after pressing
+# return
+# set show-mode-in-prompt on
 
 $if mode=vi
   set keymap vi-command
