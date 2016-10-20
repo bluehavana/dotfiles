@@ -1,0 +1,38 @@
+$include /etc/inputrc
+
+set editing-mode vi
+
+# Single tab brings up completion menu if no completion took place
+set show-all-if-unmodified on
+
+set blink-matching-parens on
+set colored-completion-prefix on
+set colored-stats on
+set show-mode-in-prompt on
+
+$if mode=vi
+  set keymap vi-command
+  # command mode mappings
+
+  # arrow up
+  "\e[A": history-search-backward            
+  # arrow down
+  "\e[B": history-search-forward             
+
+  Control-l: clear-screen
+  Control-a: beginning-of-line
+  Control-e: end-of-line
+  Control-k: kill-line
+
+  set keymap vi-insert
+  # insert mode mappings
+
+  # arrow up
+  "\e[A": history-search-backward
+  # arrow down
+  "\e[B": history-search-forward
+  Control-l: clear-screen
+  Control-a: beginning-of-line
+  Control-e: end-of-line
+  Control-k: kill-line
+$endif
