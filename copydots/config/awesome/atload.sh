@@ -5,13 +5,14 @@ testtype () {
     type "$1" &> /dev/null
 }
 
-if testtype xcompmgr
-then
-    xcompmgr -cCfF -D 2 &
-elif testtype compton
+if testtype compton
 then
     compton -cCf -D 2 &
+elif testtype xcompmgr
+then
+    xcompmgr -cCfF -D 2 &
 fi
+
 testtype syndaemon && syndaemon -i 2 -k -t -d & # disable touchpad if necessary
 
 if pgrep "NetworkManager" &> /dev/null && testtype nm-applet

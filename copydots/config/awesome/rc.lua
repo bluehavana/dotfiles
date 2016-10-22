@@ -459,7 +459,7 @@ for _, floating_class in pairs(floating_classes) do
                                    properties = {floating = true}})
 end
 
-table.insert(awful.rules.rules, {rule = {role = "popup"},
+table.insert(awful.rules.rules, {rule = {role = "pop-up"},
                                  properties = {floating = true}})
 
 -- Chromes notifications are a "bubble" (in air-quotes)
