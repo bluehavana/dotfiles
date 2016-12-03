@@ -64,15 +64,40 @@ my_uptime() {
 }
 
 append_strings() {
-    local TEMP_DIR="$(mktemp --directory)"
-    local TEMP1="$(mktemp --dry-run --tmpdir=${TEMP_DIR})"
-    local TEMP2="$(mktemp --dry-run --tmpdir=${TEMP_DIR})"
-    trap "rm -rf \"$TEMP_DIR\"" EXIT INT TERM HUP
-    mkfifo --mode=0600 "${TEMP1}"
-    mkfifo --mode=0600 "${TEMP2}"
-    printf %s\\n "${1}" > "${TEMP1}" &!
-    printf %s\\n "${2}" > "${TEMP2}" &!
-    paste -d "  " "${TEMP1}" "${TEMP2}"
+    local -a lines_1
+    local -a lines_2
+
+    local longest_line=1
+
+    # Have to use the while style since the for style excludes empty strings
+    while read -r l
+    do
+        if [[ "${longest_line}" -lt "${#l}" ]]
+        then
+            longest_line="${#l}"
+        fi
+
+        lines_1+=("${l}")
+    done <<<"${1}"
+
+    while read -r l
+    do
+        lines_2+=("${l}")
+    done <<<"${2}"
+
+    local total_lines=''
+
+    if [[ ${#lines_1} -gt ${#lines_2} ]]
+    then
+        total_lines="${#lines_1}"
+    else
+        total_lines="${#lines_2}"
+    fi
+
+    for i ({1..${total_lines}})
+    do
+        printf "%-${longest_line}s %s\\n" "${lines_1[i]}" "${lines_2[i]}"
+    done
 }
 
 stats() {
