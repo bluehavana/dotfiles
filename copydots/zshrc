@@ -250,6 +250,13 @@ then
     eval "$(rbenv init -)"
 fi
 
+# Allows for user specific npm setup.
+# Requires a 'prefix=${HOME}/.node-modules' line in ~/.npmrc
+if [[ -d "${HOME}/.node-modules/bin" ]]
+then
+    PATH="${HOME}/.node-modules/bin:${PATH}"
+fi
+
 alias allmanify='indent -bap -bli0 -i2 -l80 -ncs -npcs -npsl -fca -lc80 -fc1 -nut'
 alias v='vim --servername "${DISPLAY-vim}" --remote-silent'
 
