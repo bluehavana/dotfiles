@@ -54,7 +54,7 @@ beautiful.font = "Roboto 12"
 
 local user_wallpaper = os.getenv("HOME") .. "/.background"
 if awful.util.file_readable(user_wallpaper) then
-  beautiful.wallpaper = user_wallpaper
+  beautiful.get().wallpaper = user_wallpaper
 end
 
 -- This is used later as the default terminal and editor to run.
@@ -242,19 +242,57 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- {{{ simple  battery widget
--- batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-local batwidget = awful.widget.progressbar()
+-- simple  battery widget
+local batwidget = wibox.widget.progressbar()
 
-batwidget:set_width(8)
-batwidget:set_height(10)
-batwidget:set_vertical(true)
-batwidget:set_background_color(beautiful.bg_normal)
-batwidget:set_border_color(beautiful.fg_normal)
-batwidget:set_color(beautiful.fg_normal)
+local batbox = wibox.widget({
+  {
+    border_color = beautiful.fg_normal,
+    border_width = 1,
+    background_color = beautiful.bg_normal,
+    color = beautiful.fg_normal,
+    max_value = 1,
+    paddings = 1,
+    widget = batwidget
+  },
+  direction = "east",
+  forced_height = 10,
+  forced_width = 10,
+  layout = wibox.container.rotate,
+  margins = {
+    left = 2,
+    right = 2,
+  }
+})
 
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT1")
--- }}}
+
+local batpopup = wibox.widget.textbox()
+
+vicious.register(batpopup, vicious.widgets.bat, "$2%", 61, "BAT1")
+
+batpopup:buttons(awful.util.table.join(
+  awful.button(
+    { },
+    1,
+    function()
+      naughty.notify({
+        title = "Battery indicator",
+        text = vicious.call(vicious.widgets.bat,
+                 function(widget, args)
+                   return string.format("%s %10sh\n%s: %14d%%\n%s:%12dW",
+                                        "Remaining time", args[3],
+                                        "Wear level", args[4],
+                                        "Present rate", args[5]
+                                       )
+                 end,
+                 0
+               )
+      })
+    end
+    )
+  )
+)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -299,7 +337,7 @@ awful.screen.connect_for_each_screen(function(s)
             -- Something of this effect was in the old config
             -- if s.index == 1 then wibox.widget.systray() end,
             wibox.widget.systray(),
-            batwidget,
+            batbox,
             text_clock,
             s.layout_box,
         },
