@@ -154,6 +154,9 @@ local keyboard_layout = awful.widget.keyboardlayout()
 -- mytextclock = wibox.widget.textclock()
 local text_clock = wibox.widget.textclock("%H:%M")
 
+local month_popup = awful.widget.calendar_popup.month()
+month_popup:attach(text_clock, "br")
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
           awful.button({ }, 1,
