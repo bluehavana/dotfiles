@@ -42,7 +42,10 @@ fi
 # Applets
 testtype pasystray && pasystray &
 
-if testtype xscreensaver
+if testtype light-locker
+then
+    light-locker --lock-on-suspend &
+elif testtype xscreensaver
 then
     xscreensaver -nosplash &
 elif testtype gnome-screensaver

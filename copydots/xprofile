@@ -29,19 +29,4 @@ fi
 # For Chrome proxy settings
 # export DESKTOP_SESSION=gnome
 
-XDG_CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
-awesome_cache="${XDG_CACHE_HOME}"/awesome/
-if ! [ -e "${awesome_cache}" ]
-then
-    mkdir --mode 0700 "${awesome_cache}"
-    awesome_stdout="${awesome_cache}/stdout.log"
-    awesome_stderr="${awesome_cache}/stderr.log"
-elif ! [ -d "${awesome_cache}" ]
-then
-    awesome_stdout=/dev/null
-    awesome_stderr=/dev/null
-fi
-
 unset -f testtype
-
-exec awesome #>> "${awesome_stdout}" 2>> "${awesome_stderr}"

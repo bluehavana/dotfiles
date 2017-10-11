@@ -357,12 +357,13 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Commands for keybindings
-local scrnsaver_cmd = "xdg-screensaver lock || xscreensaver-command -lock"
+local scrnsaver_cmd = "xdg-screensaver lock || light-locker-command --lock"
+scrnsaver_cmd = scrnsaver_cmd .. " || xscreensaver-command -lock"
 scrnsaver_cmd = scrnsaver_cmd .. " || gnome-screensaver-command --lock"
 
 modify_audio = "pacmd dump | grep set-default-sink | tail -1 | cut -d' ' -f 2 | xargs -I '{}' pactl "
 audio_up = modify_audio .. "set-sink-volume '{}' +10%"
-audio_down = modify_audio .. "set-sink-volume '{}' -- -10%"
+audio_down = modify_audio .. "set-sink-volume '{}' -10%"
 audio_mute = modify_audio .. "set-sink-mute '{}' toggle"
 -- }}}
 -- {{{ Key bindings
