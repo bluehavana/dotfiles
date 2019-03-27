@@ -70,9 +70,6 @@
 [submodule "copydots/vim/bundle/unite.vim"]
 	path = copydots/vim/bundle/unite.vim
 	url = https://github.com/Shougo/unite.vim.git
-[submodule "copydots/vim/bundle/neomru.vim"]
-	path = copydots/vim/bundle/neomru.vim
-	url = https://github.com/Shougo/neomru.vim.git
 [submodule "copydots/vim/bundle/unite-tag"]
 	path = copydots/vim/bundle/unite-tag
 	url = https://github.com/tsukkee/unite-tag.git
