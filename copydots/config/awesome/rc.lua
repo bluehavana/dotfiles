@@ -13,9 +13,7 @@ local menubar = require("menubar")
 
 local vicious = require("vicious")
 
-local freedesktop = {}
-freedesktop.menu = require("freedesktop.menu")
-freedesktop.utils = require("freedesktop.utils")
+local freedesktop = require("freedesktop")
 
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
@@ -80,15 +78,6 @@ awful.layout.layouts =
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -109,35 +98,21 @@ end
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
--- myawesomemenu = {
 local awesome_menu = {
    { "hotkeys",
-     function()
-         return false, hotkeys_popup.show_help
-     end},
+     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit",
-     function()
-         awesome.quit()
-     end}
+   { "quit", function() awesome.quit() end }
 }
 
-local menu_items = freedesktop.menu.new()
-table.insert(menu_items, { "awesome", awesome_menu, beautiful.awesome_icon })
-table.insert(menu_items, { "terminal", terminal,
-                           freedesktop.utils.lookup_icon({ icon = "terminal"})
-                         })
-
--- -- from default confi:
--- local main_menu = awful.menu({ items = { { "awesome", awesome_menu, beautiful.awesome_icon },
---                                     { "open terminal", terminal }
---                                   }
---                         })
-
-local main_menu = awful.menu({ items = menu_items,
-                               theme = { width = 150 } })
+local main_menu = freedesktop.menu.build({
+    after = {
+      { "Awesome", awesome_menu, beautiful.awesome_icon },
+      { "terminal", terminal }
+    }
+})
 
 local aw_launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                             menu = main_menu })
@@ -151,7 +126,6 @@ local keyboard_layout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
--- mytextclock = wibox.widget.textclock()
 local text_clock = wibox.widget.textclock("%H:%M")
 
 local month_popup = awful.widget.calendar_popup.month()
