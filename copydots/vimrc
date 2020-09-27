@@ -207,55 +207,12 @@ endfunction
 "     $ cd ~/.vim/bundle/vimproc.vim
 "     $ make
 
-" syntastic good configs
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_error_symbol = '⚡'
-let g:syntastic_style_warning_symbol = '⚡'
-let g:syntastic_check_on_open = 1
-
-" auto supported syntastic checkers:
-" gem install sass
-" npm install -g coffeescript
-" pacman -S bison # for yacc linting
-
-" pacman -S clang-tools-extra # c linter
-" pacman -S splint # c vuln and mistake checking
-let g:syntastic_c_checkers = ['clang_check', 'splint']
-" pacman -S mono
-let g:syntastic_cs_checkers = ['mcs']
-let g:syntastic_cpp_checkers = ['clang_check']
-" npm install -g csslint
-let g:syntastic_css_checkers = ['csslint']
-" gem install haml haml-lint
-let g:syntastic_haml_checkers = ['haml', 'haml_lint']
-let g:syntastic_haskell_checkers = ['hlint', 'hdevtools']
-" cower -d html-tidy # html
-" See below for textlint stuff
-let g:syntastic_html_checkers = ['eslint', 'textlint', 'tidy']
-" npm install -g tern eslint
-let g:syntastic_javascript_checkers = ['eslint', 'tern_lint']
-" pacman -S lua
-" cower -d luacheck
-let g:syntastic_lua_checkers = ['luac', 'luacheck']
-" See below for textlint stuff
-let g:syntastic_markdown_checkers = ['textlint']
-" pip install prospector py3kwarn
-let g:syntastic_python_checkers = ['prospector', 'py3kwarn']
-" gem install rubocop
-let g:syntastic_ruby_checkers = ['rubocop']
-" pacman -S shellcheck # sh/bash checker
-let g:syntastic_sh_checkers = ['bashate', 'shellcheck']
-" cower -d sqlint
-let g:syntastic_sql_checkers = ['sqlint']
-let g:syntastic_text_checkers = ['language_check', 'textlint']
-" pacman -S libxml2
-let g:syntastic_xml_checkers = ['xmllint']
-" npm install -g jsyaml
-let g:syntastic_yaml_checkers = ['jsyaml']
+" ale
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info = '⚠'
+let g:ale_sign_style_error = '⚡'
+let g:ale_sign_style_warning = '⚡'
 
 " ** textlint **
 "

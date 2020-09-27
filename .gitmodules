@@ -28,9 +28,6 @@
 [submodule "copydots/vim/bundle/vim-fugitive"]
 	path = copydots/vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "copydots/vim/bundle/syntastic"]
-	path = copydots/vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
 [submodule "copydots/vim/bundle/vim-indent-object"]
 	path = copydots/vim/bundle/vim-indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
@@ -91,3 +88,6 @@
 [submodule "copydots/vim/bundle/vim-surround"]
 	path = copydots/vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "copydots/vim/pack/plugins/start/ale"]
+	path = copydots/vim/pack/plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
