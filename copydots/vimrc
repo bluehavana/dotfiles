@@ -269,48 +269,6 @@ if exists(':nohlsearch')
   nnoremap <C-L> :nohlsearch<CR><C-L>
 endif
 
-if has('lua')
-  """"""""""" Unite
-  let g:unite_source_file_rec_max_cache_files = 1000000
-
-  call unite#custom#profile('default', 'context', {'prompt': '➤ '})
-  " rank based on fuzzy matching strength
-  call unite#custom#profile('proj_files', 'filters', 'sorter_selecta')
-  call unite#custom#profile('buffers', 'filters', 'sorter_selecta')
-  " us fuzzy matcher by default
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  " use relative paths for mru since path isn't an argument
-  call unite#custom#source('neomru/file', 'matchers',
-                           \ ['matcher_project_files',
-                           \  'converter_relative_abbr', 'sorter_selecta'])
-
-  nnoremap <silent> <CR> :<C-u>Unite
-    \ -start-insert -buffer-name=buffers -silent -short-source-names
-    \ buffer_tab buffer neomru/file<CR>
-
-  nnoremap <silent> <C-P> :<C-u>UniteWithCurrentDir
-    \ -input= -resume -no-restore -start-insert
-    \ -buffer-name=proj_files -silent -short-source-names
-    \ file_rec/async<CR>
-
-  autocmd FileType unite call s:unite_settings()
-  function! s:unite_settings()
-    imap <silent><buffer> <Tab> <Plug>(unite_select_next_line)
-    nmap <silent><buffer> <Tab> <Plug>(unite_select_next_line)
-    imap <silent><buffer> <S-Tab> <Plug>(unite_select_previous_line)
-    nmap <silent><buffer> <S-Tab> <Plug>(unite_select_previous_line)
-    imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
-    imap <silent><buffer> <C-\><C-\> <Plug>(unite_rotate_next_source)
-    nmap <silent><buffer> <C-\><C-\> <Plug>(unite_rotate_next_source)
-  endfunction
-endif
-"""""""""" easytagshttps://github.com/xolox/vim-misc
-
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 1
-let g:easytags_file = '~/.vim/easytags'
-let g:easytags_include_members = 1
-
 """"""""""" localvimrc
 let g:localvimrc_persistent = 1
 let g:localvimrc_persistence_file = "~/.vim/localvimrc_persistent"

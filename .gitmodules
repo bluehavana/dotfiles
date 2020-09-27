@@ -64,12 +64,6 @@
 [submodule "copydots/vim/bundle/vimproc.vim"]
 	path = copydots/vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "copydots/vim/bundle/unite.vim"]
-	path = copydots/vim/bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim.git
-[submodule "copydots/vim/bundle/unite-tag"]
-	path = copydots/vim/bundle/unite-tag
-	url = https://github.com/tsukkee/unite-tag.git
 [submodule "copydots/vim/bundle/vim-misc"]
 	path = copydots/vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
