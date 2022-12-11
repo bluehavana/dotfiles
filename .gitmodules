@@ -1,57 +1,45 @@
-[submodule "copydots/vim/bundle/vim-colors-solarized"]
-	path = copydots/vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "copydots/vim/bundle/vim-unimpaired"]
-	path = copydots/vim/bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "copydots/vim/bundle/vim-fugitive"]
-	path = copydots/vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "copydots/vim/bundle/vim-indent-object"]
-	path = copydots/vim/bundle/vim-indent-object
-	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "copydots/vim/bundle/vim-endwise"]
-	path = copydots/vim/bundle/vim-endwise
-	url = https://github.com/tpope/vim-endwise.git
-[submodule "copydots/vim/bundle/vim-textobj-user"]
-	path = copydots/vim/bundle/vim-textobj-user
-	url = https://github.com/kana/vim-textobj-user.git
-[submodule "copydots/vim/bundle/vim-textobj-rubyblock"]
-	path = copydots/vim/bundle/vim-textobj-rubyblock
-	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
-[submodule "copydots/vim/bundle/vim-textobj-python"]
-	path = copydots/vim/bundle/vim-textobj-python
-	url = https://github.com/bps/vim-textobj-python.git
-[submodule "copydots/vim/bundle/vim-localvimrc"]
-	path = copydots/vim/bundle/vim-localvimrc
-	url = https://github.com/embear/vim-localvimrc.git
-[submodule "copydots/vim/bundle/vim-rails"]
-	path = copydots/vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
-[submodule "copydots/vim/bundle/vim-bundler"]
-	path = copydots/vim/bundle/vim-bundler
-	url = https://github.com/tpope/vim-bundler.git
-[submodule "copydots/vim/bundle/YouCompleteMe"]
-	path = copydots/vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "copydots/vim/bundle/vimproc.vim"]
-	path = copydots/vim/bundle/vimproc.vim
-	url = https://github.com/Shougo/vimproc.vim.git
-[submodule "copydots/vim/bundle/vim-misc"]
-	path = copydots/vim/bundle/vim-misc
-	url = https://github.com/xolox/vim-misc.git
-[submodule "copydots/vim/bundle/vim-pathogen"]
-	path = copydots/vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen
-[submodule "copydots/vim/bundle/vim-csharp"]
-	path = copydots/vim/bundle/vim-csharp
-	url = https://github.com/OrangeT/vim-csharp.git
-[submodule "copydots/vim/bundle/vim-surround"]
-	path = copydots/vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "copydots/vim/pack/plugins/start/ale"]
 	path = copydots/vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
 [submodule "copydots/vim/pack/plugins/start/rust.vim"]
 	path = copydots/vim/pack/plugins/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule "copydots/vim/pack/plugins/start/vim-bundler"]
+	path = copydots/vim/pack/plugins/start/vim-bundler
+	url = https://github.com/tpope/vim-bundler.git
+[submodule "copydots/vim/pack/plugins/start/vim-unimpaired"]
+	path = copydots/vim/pack/plugins/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "copydots/vim/pack/plugins/start/vim-fugitive"]
+	path = copydots/vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "copydots/vim/pack/plugins/start/vim-indent-object"]
+	path = copydots/vim/pack/plugins/start/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "copydots/vim/pack/plugins/start/vim-endwise"]
+	path = copydots/vim/pack/plugins/start/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "copydots/vim/pack/plugins/start/vim-textobj-user"]
+	path = copydots/vim/pack/plugins/start/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "copydots/vim/pack/plugins/start/vim-textobj-rubyblock"]
+	path = copydots/vim/pack/plugins/start/vim-textobj-rubyblock
+	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "copydots/vim/pack/plugins/start/vim-textobj-python"]
+	path = copydots/vim/pack/plugins/start/vim-textobj-python
+	url = https://github.com/bps/vim-textobj-python.git
+[submodule "copydots/vim/pack/plugins/start/vim-rails"]
+	path = copydots/vim/pack/plugins/start/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "copydots/vim/pack/plugins/start/YouCompleteMe"]
+	path = copydots/vim/pack/plugins/start/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "copydots/vim/pack/plugins/start/vim-csharp"]
+	path = copydots/vim/pack/plugins/start/vim-csharp
+	url = https://github.com/OrangeT/vim-csharp.git
+[submodule "copydots/vim/pack/plugins/start/vim-surround"]
+	path = copydots/vim/pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "copydots/vim/pack/plugins/start/vim-polyglot"]
+	path = copydots/vim/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
