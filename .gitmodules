@@ -1,39 +1,15 @@
 [submodule "copydots/vim/bundle/vim-colors-solarized"]
 	path = copydots/vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "copydots/vim/bundle/vim-cucumber"]
-	path = copydots/vim/bundle/vim-cucumber
-	url = git://github.com/tpope/vim-cucumber.git
-[submodule "copydots/vim/bundle/vim-handlebars"]
-	path = copydots/vim/bundle/vim-handlebars
-	url = git://github.com/nono/vim-handlebars.git
-[submodule "copydots/vim/bundle/vim-coffee-script"]
-	path = copydots/vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule "copydots/vim/bundle/textile.vim"]
-	path = copydots/vim/bundle/textile.vim
-	url = git://github.com/timcharper/textile.vim.git
-[submodule "copydots/vim/bundle/scss-syntax.vim"]
-	path = copydots/vim/bundle/scss-syntax.vim
-	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule "copydots/vim/bundle/csv.vim"]
-	path = copydots/vim/bundle/csv.vim
-	url = git://github.com/chrisbra/csv.vim.git
-[submodule "copydots/vim/bundle/vim-ruby"]
-	path = copydots/vim/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "copydots/vim/bundle/vim-unimpaired"]
 	path = copydots/vim/bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "copydots/vim/bundle/vim-fugitive"]
 	path = copydots/vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "copydots/vim/bundle/vim-indent-object"]
 	path = copydots/vim/bundle/vim-indent-object
-	url = git://github.com/michaeljsmith/vim-indent-object.git
-[submodule "copydots/vim/bundle/vim-javascript"]
-	path = copydots/vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "copydots/vim/bundle/vim-endwise"]
 	path = copydots/vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
@@ -58,9 +34,6 @@
 [submodule "copydots/vim/bundle/YouCompleteMe"]
 	path = copydots/vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "copydots/vim/bundle/tern_for_vim"]
-	path = copydots/vim/bundle/tern_for_vim
-	url = https://github.com/marijnh/tern_for_vim.git
 [submodule "copydots/vim/bundle/vimproc.vim"]
 	path = copydots/vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
@@ -70,12 +43,6 @@
 [submodule "copydots/vim/bundle/vim-pathogen"]
 	path = copydots/vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule "copydots/vim/bundle/vim-jsx"]
-	path = copydots/vim/bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx.git
-[submodule "copydots/vim/bundle/vim-emblem"]
-	path = copydots/vim/bundle/vim-emblem
-	url = https://github.com/heartsentwined/vim-emblem.git
 [submodule "copydots/vim/bundle/vim-csharp"]
 	path = copydots/vim/bundle/vim-csharp
 	url = https://github.com/OrangeT/vim-csharp.git
